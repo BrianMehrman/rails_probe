@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<%= render 'rails_probe/shared/listener_toggle', toggle_path: ("rails_probe/listener/#{RailsProbe.listening? ? 'off' : 'on'}") %>
+
+<h1>Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Host</th>
+      <th>Session</th>
+      <th>User</th>
+      <th>Action</th>
+      <th>Path</th>
+      <th>Data</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.host %></td>
+        <td><%= report.session %></td>
+        <td><%= report.user_id %></td>
+        <td><%= report.action %></td>
+        <td><%= report.path %></td>
+        <td><%= report.data %></td>
+        <td><%= link_to 'Show', report %></td>
+        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

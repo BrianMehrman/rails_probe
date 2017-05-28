@@ -1,0 +1,19 @@
+
+<p id="controls">
+  <%= form_tag(toggle_path, id: 'toggle-form') do %>
+    <%= submit_tag(RailsProbe.listening? ? 'Disable' : 'Enable', id: 'toggle-submit-button') %>
+  <% end %>
+</p>
+<script>
+  function toggleListener(evt) {
+    evt.preventDefault();
+    $.post('<%= toggle_path %>', {}, function(data) {
+      let enabled = data.listening;
+      let text = enabled ? 'Disable' : 'Enable';
+      $('#toggle-submit-button')[0].value = text;
+    });
+    return false;
+  };
+
+  $('#toggle-form').on('submit', toggleListener);
+</script>
