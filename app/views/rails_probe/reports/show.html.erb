@@ -20,9 +20,8 @@
   <%= @report.action %>
 </p>
 
-<p>
-  <strong>Path:</strong>
-  <%= @report.path %>
+<p class='report-text'>
+  <%= File.open(@report.path, 'r').read %>
 </p>
 
 <p>
@@ -32,3 +31,14 @@
 
 <%= link_to 'Edit', edit_report_path(@report) %> |
 <%= link_to 'Back', reports_path %>
+
+<style>
+  .report-text {
+    max-height: 45em;
+    white-space: pre-wrap;
+    overflow: hidden;
+    border: 1px #555 solid;
+    width: 940px;
+    overflow-y: scroll;
+  }
+</style>
