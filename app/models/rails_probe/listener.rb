@@ -3,7 +3,6 @@ require 'ruby-prof'
 module RailsProbe
   module Listener
     extend ActiveSupport::Concern
-    BASE_PATH = 'tmp/ruby_profiles'
 
     included do
       around_action :rails_probe_listen
@@ -30,33 +29,17 @@ module RailsProbe
         result = RubyProf.profile do
           block.call
         end
-        path = write_profile(result, event_name)
-        RailsProbe::Report.create(action: event_name, path: path, session: session.try(:id), host: request.try(:host), user_id: user.try(:id))
+        report = RailsProbe::Report.create(action: event_name, session: session.try(:id), host: request.try(:host), user_id: user.try(:id))
+        path = write_profile(result, event_name, report)
+        report.path = path
       ensure
         block.call
       end
     end
 
-    def timestamp
-      DateTime.current.strftime('%Y%m%dT%H%M%S')
-    end
-
-    def dir
-      [BASE_PATH, Rails.env].join('/')
-    end
-
-    def write_profile(result, event_name)
-      # record resulto
-      output_dir = [dir, event_name, timestamp].join('/')
-      printer    = RubyProf::GraphPrinter.new(result)
-      file_path  = "#{output_dir}/graph.txt"
-
-      FileUtils.mkdir_p output_dir unless File.exists?(output_dir)
-      File.open(file_path, "w") do |f|
-        printer.print(f)
-      end
-
-      file_path
+    def write_profile(result, event_name, report)
+      Printer.new(result, event_name, report, 'call_stack').print
+      Printer.new(result, event_name, report, 'graph_html').print
     end
   end
 end

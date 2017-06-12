@@ -2378,3 +2378,24 @@ Processing by RailsProbe::ReportsController#show as HTML
   Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
   Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (8.9ms)
 Completed 200 OK in 277ms (Views: 154.8ms | ActiveRecord: 1.6ms)
+Started GET "/rails_probe/reports/1" for 127.0.0.1 at 2017-05-29 17:27:34 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (10.6ms)
+Completed 200 OK in 266ms (Views: 144.6ms | ActiveRecord: 1.6ms)
+Started GET "/rails_probe/reports" for 127.0.0.1 at 2017-05-29 17:37:58 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.5ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (4.2ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.4ms)
+Started GET "/rails_probe/reports" for 127.0.0.1 at 2017-05-29 18:25:39 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.8ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.7ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (24.5ms)
+Completed 200 OK in 269ms (Views: 153.1ms | ActiveRecord: 1.5ms)
