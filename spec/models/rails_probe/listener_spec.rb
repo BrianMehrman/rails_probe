@@ -32,6 +32,8 @@ RSpec.describe RecipesController, type: :controller do
     it 'records a session id' do
       expect(report.session).to eq('abc123')
     end
+
+    context 'with multiple printers defined'
   end
 end
 

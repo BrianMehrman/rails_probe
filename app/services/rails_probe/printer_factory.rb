@@ -1,5 +1,5 @@
 module RailsProbe
-  class Printer
+  class PrinterFactory
     attr_accessor :result, :report, :event_name, :printer, :printer_type
 
     BASE_PATH = 'tmp/ruby_profiles'
@@ -20,7 +20,7 @@ module RailsProbe
     private
 
     def timestamp
-      DateTime.current.strftime('%Y%m%dT%H%M%S')
+     DateTime.current.strftime('%Y%m%dT%H%M%S')
     end
 
     def dir

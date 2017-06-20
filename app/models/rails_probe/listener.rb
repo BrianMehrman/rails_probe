@@ -1,4 +1,5 @@
 require 'ruby-prof'
+require 'logger'
 
 module RailsProbe
   module Listener
@@ -25,21 +26,26 @@ module RailsProbe
 
     def listen(event_name:, session:, request:, user:, &block)
       begin
-        # profile block
-        result = RubyProf.profile do
+        profile = RubyProf.profile do
           block.call
         end
-        report = RailsProbe::Report.create(action: event_name, session: session.try(:id), host: request.try(:host), user_id: user.try(:id))
-        path = write_profile(result, event_name, report)
-        report.path = path
-      ensure
+
+        ReportFactory.create(
+          profile: profile,
+          action: event_name,
+          session: session.try(:id),
+          host: resquest.try(:host),
+          user_id: user.try(:id)
+        )
+      rescue StandardError => e
+        logger.error("RailsProbe Listener broke: #{e}")
+        # run call anyway (risky!)
         block.call
       end
     end
 
-    def write_profile(result, event_name, report)
-      Printer.new(result, event_name, report, 'call_stack').print
-      Printer.new(result, event_name, report, 'graph_html').print
+    def logger
+      @logger ||= Logger.new(STDOUT)
     end
   end
 end

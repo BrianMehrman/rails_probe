@@ -2399,3 +2399,23 @@ Processing by RailsProbe::ReportsController#index as HTML
   [1m[36mRailsProbe::Report Load (0.7ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
   Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (24.5ms)
 Completed 200 OK in 269ms (Views: 153.1ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "directions", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Sliced Bread"], ["directions", "Take bread, slice perpendicular to longer side."], ["created_at", "2017-06-20 03:23:16.109378"], ["updated_at", "2017-06-20 03:23:16.109378"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "directions", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Sliced Bread"], ["directions", "Take bread, slice perpendicular to longer side."], ["created_at", "2017-06-20 03:23:16.119252"], ["updated_at", "2017-06-20 03:23:16.119252"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "directions", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Sliced Bread"], ["directions", "Take bread, slice perpendicular to longer side."], ["created_at", "2017-06-20 03:23:16.121863"], ["updated_at", "2017-06-20 03:23:16.121863"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rails_probe_reports"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
