@@ -7,6 +7,9 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'pry'
+require 'rails-controller-testing'
+Rails::Controller::Testing.install
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -28,7 +31,7 @@ RSpec.configure do |config|
 
   config.after(:all) do
     if (Rails.env.test? || Rails.env.cucumber?) && !ENV['TEST_KEEP_FILES']
-      store_dir = RailsProbe::Listener.dir
+      store_dir = RailsProbe::Printer.dir
       FileUtils.rm_rf(Dir["#{store_dir}/[^.]*"])
     end
   end

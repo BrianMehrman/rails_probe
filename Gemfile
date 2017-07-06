@@ -5,13 +5,3 @@ source 'https://rubygems.org'
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'sqlite3'
-gem 'ruby-prof'
-gem "jquery-rails"
-
-group :development, :test do
-  gem 'guard', require: false
-  gem 'guard-rspec', require: false
-  gem 'rspec-rails', '~> 3.5.0'
-  gem 'pry'
-end

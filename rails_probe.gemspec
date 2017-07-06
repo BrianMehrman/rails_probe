@@ -16,6 +16,14 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.1.0"
+  s.add_dependency 'ruby-prof', '~>0.16.2'
+  s.add_dependency "jquery-rails", '~>4.3.1'
 
+  s.add_development_dependency 'guard', '2.14.1'
+  s.add_development_dependency 'guard-rspec', '4.7.3'
+  s.add_development_dependency 'rspec-rails', '~> 3.5.0'
+  s.add_development_dependency 'pry'
+  s.add_development_dependency 'better_errors'
+  s.add_development_dependency 'rails-controller-testing'
   s.add_development_dependency "sqlite3"
 end

@@ -3,6 +3,10 @@ module RailsProbe
     class GraphHtml < Printer
       PRINTER = RubyProf::GraphHtmlPrinter
 
+      def name
+        'Graph HTML'
+      end
+
       private
 
       def printer_filename

@@ -1,7 +1,13 @@
+require 'ruby-prof'
+
 module RailsProbe
   module Printers
-    class Graph < Printer
+    class GraphText < Printer
       PRINTER = RubyProf::GraphPrinter
+
+      def name
+        'Graph Text'
+      end
 
       private
 

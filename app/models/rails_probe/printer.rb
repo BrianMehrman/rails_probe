@@ -1,7 +1,13 @@
+require 'ruby-prof'
+
 module RailsProbe
   class Printer
 
     BASE_PATH = 'tmp/ruby_profiles'
+
+    def self.dir
+      [BASE_PATH, Rails.env].join('/')
+    end
 
     def initialize(result, report, action)
       @result = result
@@ -9,10 +15,12 @@ module RailsProbe
       @action = action
     end
 
+    # TODO: add rescue to handle failing printer
     def print
       File.open(filepath, 'w') do |f|
         printer.print(f, options)
       end
+      filepath
     end
 
     private
@@ -21,13 +29,14 @@ module RailsProbe
       DateTime.current.strftime('%Y%m%dT%H%M%S')
     end
 
-    def dir
-      [BASE_PATH, Rails.env, report.id, timestamp].join('/')
+    def output_dir
+      [self.class.dir, @report.id, timestamp].join('/')
     end
 
     def filepath
-      FileUtils.mkdir_p(output_dir) unless File.exists(output_dir)
-      "#{output_dir}/#{printer_filename}"
+      @filepath if @filepath
+      FileUtils.mkdir_p(output_dir) unless File.exists?(output_dir)
+      @filepath = "#{output_dir}/#{printer_filename}"
     end
 
     def options
@@ -39,7 +48,7 @@ module RailsProbe
     end
 
     def printer
-      @printer ||= PRINTER.new(result)
+      @printer ||= self.class::PRINTER.new(@result)
     end
   end
 end

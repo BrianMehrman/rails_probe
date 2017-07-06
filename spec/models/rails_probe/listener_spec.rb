@@ -9,39 +9,41 @@ RSpec.describe RecipesController, type: :controller do
   routes { Rails.application.routes }
 
   describe '#listen' do
+
+    let(:user) { double(:user, id: 'user-abc') }
     before do
       RailsProbe.listening = true
+      allow(RubyProf).to receive(:profile).and_return('foo')
       Recipe.create(name: "Sliced Bread", directions: "Take bread, slice perpendicular to longer side.")
-      allow(RailsProbe::Listener).to receive(:timestamp).and_return('12345')
-      allow(controller.session).to receive(:id).and_return('abc123')
-      get :index
+      allow(controller.session).to receive(:id).and_return('session-a')
+      allow(controller).to receive(:user).and_return(user)
     end
 
     let(:json) { JSON.parse response.body }
-    let(:report) { RailsProbe::Report.last }
+    let(:report) { RailsProbe::Report.order(created_at: :asc).last }
 
-    it 'records the action name' do
-      expect(report.action).to eq("recipes#index")
+    it 'calls ReportFactory' do
+      factory_args = {
+        profile: 'foo',
+        action: 'recipes#index',
+        session: 'session-a',
+        host: 'test.host',
+        user_id: 'user-abc'
+      }
+      expect(RailsProbe::ReportFactory).to receive(:create).with(factory_args)
+      get :index
     end
-
-    # TODO: Mock out the RubyProf and file creation
-    it 'records a file' do
-      expect(report.path).to eq('tmp/ruby_profiles/test/recipes#index/12345/graph.txt')
-    end
-
-    it 'records a session id' do
-      expect(report.session).to eq('abc123')
-    end
-
-    context 'with multiple printers defined'
   end
 end
 
 module RailsProbe
   RSpec.describe Listener, type: :model do
     it 'creates a report record' do
-      described_class.listen(event_name: "foo", session: nil, request: nil, user: nil ) { puts 'something' }
-      expect(RailsProbe::Report.count).to eq(1)
+     allow(RubyProf).to receive(:profile).and_return('foo')
+     allow_any_instance_of(RubyProf::GraphPrinter).to receive(:print).and_return('bar')
+     expect {
+       described_class.listen(event_name: "foo", session: nil, request: nil, user: nil ) { puts 'something' }
+     }.to change{ RailsProbe::Report.count }.by(1)
     end
   end
 end

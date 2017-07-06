@@ -3,6 +3,10 @@ module RailsProbe
     class CallStack < Printer
       PRINTER = RubyProf::CallStackPrinter
 
+      def name
+        'Call Stack'
+      end
+
       private
 
       def options

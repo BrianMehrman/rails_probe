@@ -20,9 +20,20 @@
   <%= @report.action %>
 </p>
 
-<p class='report-text'>
-  <%= File.open(@report.path, 'r').read %>
-</p>
+<div id='tabs' class="report-text">
+  <ul>
+    <% @prints.each do |print| %>
+      <li><a href="#<%= print.name.underscore %>"><span><%= print.name %></span></a></li>
+    <% end %>
+  </ul>
+  <% @prints.each do |print| %>
+    <div id="<%= print.name.underscore %>">
+      <div>
+        <%= File.read(print.path)  %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <p>
   <strong>Data:</strong>

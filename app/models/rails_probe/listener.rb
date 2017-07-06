@@ -31,14 +31,15 @@ module RailsProbe
         end
 
         ReportFactory.create(
-          profile: profile,
+          profile,
           action: event_name,
           session: session.try(:id),
-          host: resquest.try(:host),
+          host: request.try(:host),
           user_id: user.try(:id)
         )
       rescue StandardError => e
         logger.error("RailsProbe Listener broke: #{e}")
+        binding.pry
         # run call anyway (risky!)
         block.call
       end
