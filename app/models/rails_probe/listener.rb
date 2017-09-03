@@ -35,7 +35,8 @@ module RailsProbe
           action: event_name,
           session: session.try(:id),
           host: request.try(:host),
-          user_id: user.try(:id)
+          user_id: user.try(:id),
+          printers: [Printers::GraphHtml.name, Printers::CallStack.name]
         )
       rescue StandardError => e
         logger.error("RailsProbe Listener broke: #{e}")

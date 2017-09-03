@@ -26,11 +26,10 @@
       <li><a href="#<%= print.name.underscore %>"><span><%= print.name %></span></a></li>
     <% end %>
   </ul>
-  <% @prints.each do |print| %>
+  <% @prints.each do |print|
+%>
     <div id="<%= print.name.underscore %>">
-      <div>
-        <%= File.read(print.path)  %>
-      </div>
+      <iframe src="<%= print.path.gsub("#{RailsProbe::PRINTERS_DIR}\/",'/').html_safe %>"></iframe>
     </div>
   <% end %>
 </div>

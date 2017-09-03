@@ -8,6 +8,7 @@ module RailsProbe
     # GET /reports
     def index
       @reports = Report.all
+      render json: @reports
     end
 
     # GET /reports/1

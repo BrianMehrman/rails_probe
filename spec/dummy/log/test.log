@@ -5626,3 +5626,505 @@ Processing by RailsProbe::ReportsController#show as HTML
 Completed 200 OK in 295ms (Views: 146.3ms | ActiveRecord: 2.2ms)
 Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-05 20:05:15 -0500
 Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-05 20:05:16 -0500
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:03:45 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.7ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (2.0ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (36.0ms)
+Completed 200 OK in 447ms (Views: 201.2ms | ActiveRecord: 7.2ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:03:46 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:03:46 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "amount" float, "unit" varchar, "recipe_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "directions" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170704021906)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170430144930),
+(20170430145131);
+
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-07-29 21:05:26.940027"], ["updated_at", "2017-07-29 21:05:26.940027"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:15:28 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.5ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.3ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (16.7ms)
+Completed 500 Internal Server Error in 169ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:16:21 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.2ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (3.1ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:17:44 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.5ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (12.5ms)
+Completed 500 Internal Server Error in 145ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2017-07-29 16:17:49 -0500
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (1.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 140ms (Views: 135.0ms | ActiveRecord: 1.7ms)
+Started GET "/assets/application-8f56e5401d144e89a171cff27608a630c76fda761e0543b3e27fd8d988a1a716.css" for 127.0.0.1 at 2017-07-29 16:17:49 -0500
+Started GET "/assets/application-272b32da62246e767425d445cb7a5ff3b7d002ccc3d49a2717b442d30ffc9da9.js" for 127.0.0.1 at 2017-07-29 16:17:49 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "amount" float, "unit" varchar, "recipe_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "directions" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170704021906)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170430144930),
+(20170430145131);
+
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-07-29 21:18:27.010913"], ["updated_at", "2017-07-29 21:18:27.010913"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "amount" float, "unit" varchar, "recipe_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "directions" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170704021906)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170430144930),
+(20170430145131);
+
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-07-29 21:19:25.618400"], ["updated_at", "2017-07-29 21:19:25.618400"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "amount" float, "unit" varchar, "recipe_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "directions" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170704021906)[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170430144930),
+(20170430145131);
+
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-07-29 21:20:19.889320"], ["updated_at", "2017-07-29 21:20:19.889320"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-07-29 21:20:36.978720"], ["updated_at", "2017-07-29 21:20:36.978720"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-07-29 16:20:54 -0500
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 264ms (Views: 141.0ms | ActiveRecord: 1.3ms)
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:20:58 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.4ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.3ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (5.2ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "amount" float, "unit" varchar, "recipe_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "directions" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170704021906)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170430144930),
+(20170430145131);
+
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-07-29 21:21:37.802572"], ["updated_at", "2017-07-29 21:21:37.802572"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-07-29 21:22:02.182768"], ["updated_at", "2017-07-29 21:22:02.182768"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:22:14 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.5ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.8ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (13.1ms)
+Completed 200 OK in 272ms (Views: 142.8ms | ActiveRecord: 1.4ms)
+Started POST "/rails_probe/listener/on" for 127.0.0.1 at 2017-07-29 16:22:18 -0500
+Processing by RailsProbe::ListenerController#on as */*
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:22:23 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.2ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (1.0ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+Started GET "/" for 127.0.0.1 at 2017-07-29 16:22:26 -0500
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (4.2ms)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "rails_probe_reports" ("id", "host", "action", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["host", "localhost"], ["action", "recipes#index"], ["data", "---\n:prints:\n  Graph Text: public/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt\n"], ["created_at", "2017-07-29 21:22:27.303518"], ["updated_at", "2017-07-29 21:22:27.303518"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 304ms (Views: 9.9ms | ActiveRecord: 2.1ms)
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:22:50 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.2ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (2.4ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:22:53 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (3.7ms)
+Completed 200 OK in 11ms (Views: 6.1ms | ActiveRecord: 0.2ms)
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:24:14 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (3.1ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.1ms)
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:29:08 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.5ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.9ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (21.9ms)
+Completed 200 OK in 285ms (Views: 161.0ms | ActiveRecord: 1.7ms)
+Started POST "/rails_probe/listener/on" for 127.0.0.1 at 2017-07-29 16:29:11 -0500
+Processing by RailsProbe::ListenerController#on as */*
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-07-29 16:29:13 -0500
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (4.0ms)
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:29:15 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.3ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (2.7ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2017-07-29 16:31:05 -0500
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 9302ms (Views: 6.2ms | ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2017-07-29 16:31:19 -0500
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (2.2ms)
+Completed   in 5601ms (Views: 4.9ms | ActiveRecord: 0.2ms)
+Completed   in 131082ms (Views: 10.1ms | ActiveRecord: 0.6ms)
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:31:35 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.6ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.8ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (24.2ms)
+Completed 200 OK in 321ms (Views: 172.4ms | ActiveRecord: 1.7ms)
+Started POST "/rails_probe/listener/on" for 127.0.0.1 at 2017-07-29 16:31:37 -0500
+Processing by RailsProbe::ListenerController#on as */*
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-07-29 16:31:42 -0500
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (4.2ms)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rails_probe_reports" ("id", "host", "action", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", "81c9780f-d2a9-426f-b3ea-795de7bc293f"], ["host", "localhost"], ["action", "recipes#index"], ["data", "---\n:prints:\n  Graph HTML: public/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/graph.html\n  Call Stack: public/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/call_stack.html\n"], ["created_at", "2017-07-29 21:31:43.636357"], ["updated_at", "2017-07-29 21:31:43.636357"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 730ms (Views: 9.5ms | ActiveRecord: 1.7ms)
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:31:47 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.2ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+Started GET "/rails_probe/reports/81c9780f-d2a9-426f-b3ea-795de7bc293f" for 127.0.0.1 at 2017-07-29 16:31:51 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"81c9780f-d2a9-426f-b3ea-795de7bc293f"}
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "81c9780f-d2a9-426f-b3ea-795de7bc293f"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (1.2ms)
+Completed 200 OK in 7ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+Started GET "/rails_probe/reports/public/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/graph.html" for 127.0.0.1 at 2017-07-29 16:31:51 -0500
+Started GET "/rails_probe/reports/public/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/call_stack.html" for 127.0.0.1 at 2017-07-29 16:31:51 -0500
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" ORDER BY "rails_probe_reports"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/public/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/graph.html" for 127.0.0.1 at 2017-07-29 16:34:40 -0500
+Started GET "/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/graph.html" for 127.0.0.1 at 2017-07-29 16:34:57 -0500
+Started GET "/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/graph.html" for 127.0.0.1 at 2017-07-29 16:35:01 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:35:51 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.5ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:35:51 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:35:51 -0500
+Started GET "/rails_probe/reports/public/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:35:52 -0500
+Started GET "/rails_probe" for 127.0.0.1 at 2017-07-29 16:39:21 -0500
+Processing by RailsProbe::ReportsController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/shared/_listener_toggle.html.erb (0.6ms) [cache miss]
+  [1m[36mRailsProbe::Report Load (1.0ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/index.html.erb within layouts/rails_probe/application (23.6ms)
+Completed 200 OK in 313ms (Views: 174.9ms | ActiveRecord: 2.0ms)
+Started POST "/rails_probe/listener/on" for 127.0.0.1 at 2017-07-29 16:39:23 -0500
+Processing by RailsProbe::ListenerController#on as */*
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:39:24 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.3ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (1.0ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:39:24 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:39:24 -0500
+Started GET "/rails_probe/reports/public/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:39:25 -0500
+Started GET "/rails_probe/reports/81c9780f-d2a9-426f-b3ea-795de7bc293f" for 127.0.0.1 at 2017-07-29 16:39:30 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"81c9780f-d2a9-426f-b3ea-795de7bc293f"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "81c9780f-d2a9-426f-b3ea-795de7bc293f"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+Started GET "/rails_probe/reports/public/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/graph.html" for 127.0.0.1 at 2017-07-29 16:39:30 -0500
+Started GET "/rails_probe/reports/public/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/call_stack.html" for 127.0.0.1 at 2017-07-29 16:39:30 -0500
+Started GET "/public/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:39:54 -0500
+Started GET "/public/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:46:11 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:46:12 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:46:12 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:46:12 -0500
+Started GET "/rails_probe/reports/public/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:46:13 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:46:15 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:46:15 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:46:15 -0500
+Started GET "/rails_probe/reports/public/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:46:16 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:46:49 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.1ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:46:49 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:46:49 -0500
+Started GET "/rails_probe/reports/public/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:46:50 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:47:04 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (7.1ms)
+Completed 200 OK in 284ms (Views: 144.4ms | ActiveRecord: 1.9ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:47:05 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:47:05 -0500
+Started GET "/rails_probe/reports/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:47:06 -0500
+Started GET "/rails_probe/reports/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:47:45 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:48:31 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:48:31 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:48:31 -0500
+Started GET "/rails_probe/reports/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:48:32 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:48:34 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:48:34 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:48:35 -0500
+Started GET "/rails_probe/reports/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:48:35 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:48:43 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.3ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:49:27 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (10078.2ms)
+Completed 200 OK in 10200ms (Views: 10199.0ms | ActiveRecord: 0.4ms)
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:49:37 -0500
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:49:38 -0500
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (55789.1ms)
+Completed   in 55944ms (ActiveRecord: 1.9ms)
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:49:43 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (9.3ms)
+Completed 200 OK in 278ms (Views: 140.6ms | ActiveRecord: 1.6ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:49:43 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:49:43 -0500
+Started GET "/rails_probe/reports/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:49:44 -0500
+Started GET "/%20%20%20%20%20%20%20%20%20%20%20%20%20ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:50:30 -0500
+Started GET "/%20%20%20%20%20%20%20%20%20%20%20%20%20ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:50:40 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:51:06 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:51:06 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:51:06 -0500
+Started GET "/rails_probe/reports/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:51:07 -0500
+Started GET "/rails_probe/reports/9934916d-34e4-4348-b0d5-c266cbbc91a9" for 127.0.0.1 at 2017-07-29 16:51:30 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"9934916d-34e4-4348-b0d5-c266cbbc91a9"}
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "9934916d-34e4-4348-b0d5-c266cbbc91a9"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (7.6ms)
+Completed 200 OK in 298ms (Views: 151.2ms | ActiveRecord: 1.6ms)
+Started GET "/assets/rails_probe/application-5ac6384ca459dff358234a54a3a7c0a1e0031a928018b37af5408111e7077bb9.css" for 127.0.0.1 at 2017-07-29 16:51:30 -0500
+Started GET "/assets/rails_probe/application-d86f90b37a1d757c4dc7d119adb29b6db68fe61366a13e3609d97b82ea4ac311.js" for 127.0.0.1 at 2017-07-29 16:51:30 -0500
+Started GET "/rails_probe/reports/ruby_profiles/test/9934916d-34e4-4348-b0d5-c266cbbc91a9/20170729T212227/graph.txt" for 127.0.0.1 at 2017-07-29 16:51:36 -0500
+Started GET "/rails_probe/reports/81c9780f-d2a9-426f-b3ea-795de7bc293f" for 127.0.0.1 at 2017-07-29 16:51:40 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"81c9780f-d2a9-426f-b3ea-795de7bc293f"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "81c9780f-d2a9-426f-b3ea-795de7bc293f"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.1ms)
+Started GET "/ruby_profiles/test/81c9780f-d2a9-426f-b3ea-795de7bc293f/20170729T213143/graph.html" for 127.0.0.1 at 2017-07-29 16:51:41 -0500
+Started GET "/rails_probe/reports/81c9780f-d2a9-426f-b3ea-795de7bc293f" for 127.0.0.1 at 2017-07-29 16:52:15 -0500
+Processing by RailsProbe::ReportsController#show as HTML
+  Parameters: {"id"=>"81c9780f-d2a9-426f-b3ea-795de7bc293f"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "81c9780f-d2a9-426f-b3ea-795de7bc293f"], ["LIMIT", 1]]
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/app/views/rails_probe/reports/show.html.erb within layouts/rails_probe/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms)

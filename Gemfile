@@ -5,3 +5,10 @@ source 'https://rubygems.org'
 # development dependencies will be added by default to the :development group.
 gemspec
 
+gem 'slim-rails'
+
+group :development, :test do
+  gem 'foreman'
+  gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.5.0'
+end

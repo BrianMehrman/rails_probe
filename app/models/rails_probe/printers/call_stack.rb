@@ -16,6 +16,10 @@ module RailsProbe
         }
       end
 
+      def title
+        @title || name
+      end
+
       def printer_filename
         'call_stack.html'
       end

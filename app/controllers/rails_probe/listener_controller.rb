@@ -3,6 +3,10 @@ require_dependency "rails_probe/application_controller"
 module RailsProbe
   class ListenerController < ApplicationController
 
+    def index
+      render json: { listening: listening? }, status: :accepted
+    end
+
     def on
       render json: { listening: enable }, status: :accepted
     end
@@ -12,6 +16,10 @@ module RailsProbe
     end
 
     private
+
+    def listening?
+      RailsProbe.listening?
+    end
 
     def enable
       RailsProbe.listening=true

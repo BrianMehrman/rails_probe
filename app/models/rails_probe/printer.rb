@@ -3,7 +3,7 @@ require 'ruby-prof'
 module RailsProbe
   class Printer
 
-    BASE_PATH = 'tmp/ruby_profiles'
+    BASE_PATH = "#{RailsProbe::PRINTERS_DIR}/ruby_profiles"
 
     def self.dir
       [BASE_PATH, Rails.env].join('/')
