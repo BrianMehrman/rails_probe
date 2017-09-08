@@ -7,7 +7,7 @@ const reports = [
     "session": "xxy",
     "created_at": "2017-08-27T14:30:30",
     "data": {
-      "printers": [
+      "prints": [
         {
           "type": "graph-text",
           "name": "Graph Text",
@@ -32,7 +32,7 @@ const reports = [
     "session": "xxy",
     "created_at": "2017-08-27T16:45:10",
     "data": {
-      "printers": [
+      "prints": [
         {
           "type": "graph-text",
           "name": "Graph Text",
@@ -57,7 +57,7 @@ const reports = [
     "session": "xxy",
     "created_at": "2017-08-28T10:10:00",
     "data": {
-      "printers": [
+      "prints": [
         {
           "type": "graph-text",
           "name": "Graph Text",
@@ -82,7 +82,7 @@ const reports = [
     "session": "xxy",
     "created_at": "2017-08-28T17:50:00",
     "data": {
-      "printers": [
+      "prints": [
         {
           "type": "call-stack",
           "name": "Call Stack",
@@ -103,7 +103,7 @@ const reports = [
     "session": "u83",
     "created_at": "2017-08-27T19:42:30",
     "data":   {
-      "printers": [
+      "prints": [
         {
           "type": "graph-text",
           "name": "Graph Text",
@@ -134,7 +134,7 @@ const reports = [
     "session": "3ex",
     "created_at": "2017-08-31T00:30:30",
     "data": {
-      "printers": [
+      "prints": [
         {
           "type": "graph-html",
           "name": "Graph HTML",

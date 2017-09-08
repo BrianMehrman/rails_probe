@@ -27,7 +27,7 @@ class Report {
     this.hook = '';
     this.session = attributes.session;
     this.start = attributes.created_at;
-    this.printers = attributes.data && attributes.data.prints;
+    this.prints = attributes.data && attributes.data.prints;
   }
 
   link() {

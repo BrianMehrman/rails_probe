@@ -22,48 +22,89 @@ import Monitor from 'grommet/components/icons/base/Monitor';
 import Button from 'grommet/components/Button';
 import CaretBack from 'grommet/components/icons/base/CaretBack';
 
-const DetailsView = (report) => {
-  return (
-    <Tab
-      title='Details'
-      >
-      <Box direction='column'
-           flex={true}
-           justify='left'
-           align='center'
-           size='medium'
-           colorIndex='accent-2'>
-       <Paragraph>
-         Details View
-       </Paragraph>
-        <Value value={report.id}
-          icon={<Book />}
-          label='ID'
-          units='uuid' />
-        <Value value={report.hook}
-          icon={<Attraction />}
-          label='Hook' />
-        <Value value={report.session}
-          icon={<Monitor />}
-          label='Session' />
-      </Box>
-    </Tab>
-  )
+class DetailsView extends Component {
+  static propTypes = {
+    report: PropTypes.object,
+    title: PropTypes.node,
+    active: PropTypes.bool,
+    id: PropTypes.string,
+    onRequestForActive: PropTypes.func
+  }
+
+  render() {
+    const {
+      id,
+      active,
+      title,
+      onRequestForActive,
+      report,
+      children
+    } = this.props;
+
+    const { hook, session } = report || {};
+
+    const reportId = report && report.id;
+
+    return (
+      <Tab title={title} active={active} id={id} onRequestForActive={onRequestForActive}>
+        <Box direction='column'
+          flex={true}
+          justify='left'
+          align='center'
+          size='medium'
+          colorIndex='accent-2'>
+          <Paragraph>
+            Details View
+          </Paragraph>
+          <Value value={reportId}
+            icon={<Book />}
+            label='ID'
+            units='uuid' />
+          <Value value={hook}
+            icon={<Attraction />}
+            label='Hook' />
+          <Value value={session}
+            icon={<Monitor />}
+            label='Session' />
+        </Box>
+      </Tab>
+    )
+  }
 }
 
-const PrinterView = (printer) => {
-  return (
-    <Tab
-      title={ printer.type }
-      basis='medium'>
-      <Paragraph>
-      {printer.name}
-      </Paragraph>
-      <iframe
-        src={printer.url}></iframe>
-    </Tab>
-  )
+
+
+class PrinterView extends Component {
+  static propTypes = {
+    print: PropTypes.object,
+    title: PropTypes.node,
+    active: PropTypes.bool,
+    id: PropTypes.string,
+    onRequestForActive: PropTypes.func
+  }
+  debugger
+
+  render() {
+    const {
+      id,
+      active,
+      onRequestForActive,
+      print,
+      children
+    } = this.props;
+
+    return (
+      <Tab title={ print.type } active={active} id={id} onRequestForActive={onRequestForActive}>
+        <Paragraph>
+          {print.name}
+        </Paragraph>
+        <iframe title={print.type} src={print.url}></iframe>
+      </Tab>
+    )
+  }
 }
+
+
 
 const BackButton = withRouter(({history, to, label}) => (
   <Button icon={<CaretBack />}
@@ -75,16 +116,15 @@ const BackButton = withRouter(({history, to, label}) => (
 
 class ReportView extends Component {
   static propTypes = {
-    reportId: PropTypes.string,
-    report: PropTypes.object,
+    selectedReport: PropTypes.object,
     isFetchingReport: PropTypes.bool,
     isListening: PropTypes.bool,
     dispatch: PropTypes.func.isRequired
   }
 
   componentDidMount() {
-    const { dispatch, reportId } = this.props;
-    dispatch(fetchReport(reportId));
+    const { dispatch, selectedReport } = this.props;
+    dispatch(fetchReport(selectedReport.id));
     dispatch(getListenerState());
   }
 
@@ -93,9 +133,9 @@ class ReportView extends Component {
   }
 
   render() {
-    const {report, isListening, history} = this.props;
-    const printers = (report && report.printers) || [];
-debugger
+    const { selectedReport, isListening, history } = this.props;
+    const prints = (selectedReport && selectedReport.prints) || [];
+
     return (
       <Box direction='column'
         flex={true}
@@ -114,9 +154,9 @@ debugger
           basis='medium'
           colorIndex='neutral-1-a'>
           <Tabs>
-            <DetailsView report={report} />
-            { printers.map((printer) => (
-              <PrinterView printer={printer} />
+            <DetailsView title='Details' report={selectedReport} />
+            { prints.map((print) => (
+              <PrinterView print={print} />
             ))}
           </Tabs>
         </Box>
@@ -130,17 +170,25 @@ const mapStateToProps = (state, ownProps) => {
       isFetchingReport
   } = state.reports;
 
+  let { selectedReport } = state.reports;
+
   const {
     isListening
   } = state.listener;
 
-  let reportId = ownProps.id;
-debugger
+  const { match } = ownProps;
+
+  const reportId = match.params.id;
+
+  if (!selectedReport || reportId !== selectedReport.id) {
+    selectedReport = { id: reportId } ;
+  }
+
   return {
-    reportId,
+    selectedReport,
     isFetchingReport,
     isListening
   }
 }
 
-export default connect(mapStateToProps)(ReportView);
+export default withRouter(connect(mapStateToProps)(ReportView));

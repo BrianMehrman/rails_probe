@@ -67,13 +67,13 @@ export const requestReport = (id) => ({
 
 export const receiveReportSuccess = (json) => ({
   type: RECEIVE_REPORT_SUCCESS,
-  report: json,
+  selectedReport: new Report(json),
   receivedAt: Date.now()
 })
 
 export const receiveReportFailure = (json, errors) => ({
   type: RECEIVE_REPORT_FAILURE,
-  report: json,
+  selectedReport: new Report(json),
   receivedAt: Date.now(),
   errors
 })
