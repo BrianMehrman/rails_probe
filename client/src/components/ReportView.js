@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -14,7 +14,7 @@ import TimeHeader from './TimeHeader';
 import Box from 'grommet/components/Box';
 import Tabs from 'grommet/components/Tabs';
 import Tab from 'grommet/components/Tab';
-import Paragraph from 'grommet/components/Paragraph';
+import Heading from 'grommet/components/Heading';
 import Value from 'grommet/components/Value';
 import Book from 'grommet/components/icons/base/Book';
 import Attraction from 'grommet/components/icons/base/Attraction';
@@ -24,21 +24,12 @@ import CaretBack from 'grommet/components/icons/base/CaretBack';
 
 class DetailsView extends Component {
   static propTypes = {
-    report: PropTypes.object,
-    title: PropTypes.node,
-    active: PropTypes.bool,
-    id: PropTypes.string,
-    onRequestForActive: PropTypes.func
+    report: PropTypes.object
   }
 
   render() {
     const {
-      id,
-      active,
-      title,
-      onRequestForActive,
-      report,
-      children
+      report
     } = this.props;
 
     const { hook, session } = report || {};
@@ -46,65 +37,62 @@ class DetailsView extends Component {
     const reportId = report && report.id;
 
     return (
-      <Tab title={title} active={active} id={id} onRequestForActive={onRequestForActive}>
-        <Box direction='column'
-          flex={true}
-          justify='left'
-          align='center'
-          size='medium'
-          colorIndex='accent-2'>
-          <Paragraph>
-            Details View
-          </Paragraph>
-          <Value value={reportId}
-            icon={<Book />}
-            label='ID'
-            units='uuid' />
-          <Value value={hook}
-            icon={<Attraction />}
-            label='Hook' />
-          <Value value={session}
-            icon={<Monitor />}
-            label='Session' />
-        </Box>
-      </Tab>
+      <Box
+        direction='column'
+        flex={true}
+        full='horizontal'
+        justify='left'
+        align='start'
+        pad='small'
+        colorIndex='light-2'>
+        <Heading>
+          Details View
+        </Heading>
+        <Value value={reportId}
+          icon={<Book />}
+          align='start'
+          label='ID' />
+        <Value value={hook || 'None'}
+          icon={<Attraction />}
+          align='start'
+          label='Hook' />
+        <Value value={session}
+          icon={<Monitor />}
+          align='start'
+          label='Session' />
+      </Box>
     )
   }
 }
-
-
 
 class PrinterView extends Component {
   static propTypes = {
-    print: PropTypes.object,
-    title: PropTypes.node,
-    active: PropTypes.bool,
-    id: PropTypes.string,
-    onRequestForActive: PropTypes.func
+    print: PropTypes.object
   }
-  debugger
 
   render() {
     const {
-      id,
-      active,
-      onRequestForActive,
-      print,
-      children
+      print
     } = this.props;
-
+    const url =`/${print.url}`;
     return (
-      <Tab title={ print.type } active={active} id={id} onRequestForActive={onRequestForActive}>
-        <Paragraph>
+      <Box
+        size='full'
+        pad='small'
+        direction='column'>
+        <Heading>
           {print.name}
-        </Paragraph>
-        <iframe title={print.type} src={print.url}></iframe>
-      </Tab>
+        </Heading>
+        <Box
+          size='full'
+          full="horizontal"
+          direction='column'>
+            <iframe title={print.type} src={url} height="400"></iframe>
+        </Box>
+      </Box>
     )
   }
 }
-
-
 
 const BackButton = withRouter(({history, to, label}) => (
   <Button icon={<CaretBack />}
@@ -141,25 +129,22 @@ class ReportView extends Component {
         flex={true}
         pad='none'
         justify='center'
+        size='full'
         colorIndex='light-2'>
         <TimeHeader
           isListening={isListening}
           toggleListener={this.toggleListener} />
         <BackButton history={history} to="/" label="Back" />
-        <Box
-          direction='row'
-          flex={true}
-          align='start'
-          size='full'
-          basis='medium'
-          colorIndex='neutral-1-a'>
-          <Tabs>
-            <DetailsView title='Details' report={selectedReport} />
-            { prints.map((print) => (
+        <Tabs size='full'>
+          <Tab title='Details'>
+            <DetailsView report={selectedReport} />
+          </Tab>
+          { prints.map((print) => (
+            <Tab title={print.type} >
               <PrinterView print={print} />
-            ))}
-          </Tabs>
-        </Box>
+            </Tab>
+          ))}
+        </Tabs>
       </Box>
     )
   }

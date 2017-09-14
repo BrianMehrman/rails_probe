@@ -11,17 +11,17 @@ const reports = [
         {
           "type": "graph-text",
           "name": "Graph Text",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         },
         {
           "type": "graph-html",
           "name": "Graph HTML",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         },
         {
           "type": "call-stack",
           "name": "Call Stack",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         }
       ]
     }
@@ -36,17 +36,17 @@ const reports = [
         {
           "type": "graph-text",
           "name": "Graph Text",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         },
         {
           "type": "graph-html",
           "name": "Graph HTML",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         },
         {
           "type": "call-stack",
           "name": "Call Stack",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         }
       ]
     }
@@ -61,17 +61,17 @@ const reports = [
         {
           "type": "graph-text",
           "name": "Graph Text",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         },
         {
           "type": "graph-html",
           "name": "Graph HTML",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         },
         {
           "type": "call-stack",
           "name": "Call Stack",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         }
       ]
     }
@@ -86,7 +86,7 @@ const reports = [
         {
           "type": "call-stack",
           "name": "Call Stack",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         }
       ]
     }
@@ -107,17 +107,17 @@ const reports = [
         {
           "type": "graph-text",
           "name": "Graph Text",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         },
         {
           "type": "graph-html",
           "name": "Graph HTML",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         },
         {
           "type": "call-stack",
           "name": "Call Stack",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         }
       ]
     }
@@ -138,12 +138,12 @@ const reports = [
         {
           "type": "graph-html",
           "name": "Graph HTML",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         },
         {
           "type": "call-stack",
           "name": "Call Stack",
-          "url": "tmp/recipes#index/20170528T183956/graph.txt"
+          "url": "tmp/recipes_index/20170528T183956/graph.txt"
         }
       ]
     }
@@ -157,6 +157,8 @@ const reports = [
 ];
 
 const app = express();
+
+app.use(express.static('public'));
 
 app.set("port", process.env.PORT || 3001);
 app.listening = false;
