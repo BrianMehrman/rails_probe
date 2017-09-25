@@ -73,6 +73,7 @@ const mapStateToProps = state => {
       isFetchingReport
   } = state.reports;
 
+
   const {
     isListening
   } = state.listener;

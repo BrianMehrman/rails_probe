@@ -3,7 +3,7 @@ RailsProbe::Engine.routes.draw do
   root to: 'application#index'
 
   resources :reports do
-    member { get 'print/:type', to: 'reports#print' }
+    member { get 'print/:file', to: 'reports#print' }
   end
   # get 'reports', to: 'reports#index'
   # get 'reports/:id', to: 'reports#show'
@@ -11,4 +11,6 @@ RailsProbe::Engine.routes.draw do
   get 'listener', to: 'listener#index'
   get 'listener/on', to: 'listener#on'
   get 'listener/off', to: 'listener#off'
+
+  get ':id', to: 'application#index'
 end

@@ -1,3 +1,5 @@
+import { BASE_ROUTE } from '../actions';
+
 class Report {
   //     {
   //       id: 'abs',
@@ -27,11 +29,19 @@ class Report {
     this.hook = '';
     this.session = attributes.session;
     this.start = attributes.created_at;
-    this.prints = attributes.data && attributes.data.prints;
+    this.prints = this.extractPrints(attributes);
+  }
+
+  extractPrints(attributes) {
+    const printsObj = attributes.prints;
+
+    if(typeof(printsObj) === 'undefined') return [];
+
+    return Object.keys(printsObj).map((p) => { return printsObj[p] });
   }
 
   link() {
-    return `/${this.id}`;
+    return `${BASE_ROUTE}/${this.id}`;
   }
 }
 

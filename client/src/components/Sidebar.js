@@ -17,9 +17,6 @@ const SideMenu = () => {
           <Anchor href='#' className='active'>
             Dashboard
           </Anchor>
-          <Anchor href='#'>
-            Hooks
-          </Anchor>
         </Menu>
       </Box>
     </Header>

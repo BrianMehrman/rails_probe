@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
+  BASE_ROUTE,
   fetchReport,
   getListenerState,
   toggleListenerIfNeeded
@@ -39,8 +40,7 @@ class DetailsView extends Component {
     return (
       <Box
         direction='column'
-        flex={true}
-        full='horizontal'
+        size={{height: 'full', width: 'xlarge'}}
         justify='left'
         align='start'
         pad='small'
@@ -77,30 +77,21 @@ class PrinterView extends Component {
     const url =`/${print.url}`;
     return (
       <Box
-        size='full'
         pad='small'
+        size={{height: 'full', width: 'xlarge'}}
         direction='column'>
-        <Heading>
-          {print.name}
-        </Heading>
-        <Box
-          size='full'
-          full="horizontal"
-          direction='column'>
-            <iframe title={print.type} src={url} height="400"></iframe>
+        <Box direction='row'>
+          <Heading>
+            {print.name}
+          </Heading>
+        </Box>
+        <Box direction='row'>
+            <iframe title={print.type} src={url} width='100%' height="400"></iframe>
         </Box>
       </Box>
     )
   }
 }
-
-const BackButton = withRouter(({history, to, label}) => (
-  <Button icon={<CaretBack />}
-    label={label}
-    onClick={() => {history.push(to)}}
-    secondary={true}
-    />
-))
 
 class ReportView extends Component {
   static propTypes = {
@@ -126,25 +117,39 @@ class ReportView extends Component {
 
     return (
       <Box direction='column'
-        flex={true}
         pad='none'
         justify='center'
         size='full'
         colorIndex='light-2'>
-        <TimeHeader
-          isListening={isListening}
-          toggleListener={this.toggleListener} />
-        <BackButton history={history} to="/" label="Back" />
-        <Tabs size='full'>
-          <Tab title='Details'>
-            <DetailsView report={selectedReport} />
-          </Tab>
-          { prints.map((print) => (
-            <Tab title={print.type} >
-              <PrinterView print={print} />
+        <Box direction='row'
+          full='horizontal'>
+          <Box direction='column'
+            pad='small'>
+            <Button icon={<CaretBack />}
+              onClick={() => {history.push(BASE_ROUTE)}}
+              />
+          </Box>
+          <Box direction='column' full='horizontal'>
+            <TimeHeader
+              isListening={isListening}
+              toggleListener={this.toggleListener} />
+          </Box>
+        </Box>
+        <Box direction='row'
+          basis='full'>
+          <Tabs responsive={true}>
+            <Tab title='Details'>
+              <Box direction='column' size='full' >
+                <DetailsView report={selectedReport} />
+              </Box>
             </Tab>
-          ))}
-        </Tabs>
+            { prints.map((print) => (
+              <Tab title={print.type} >
+                <PrinterView print={print} />
+              </Tab>
+            ))}
+          </Tabs>
+        </Box>
       </Box>
     )
   }

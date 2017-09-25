@@ -1,5 +1,7 @@
 import Report from '../models/Report.js'
-const BASE_ROUTE = 'rails_probe';
+
+// ROUTES
+export const BASE_ROUTE = '/rails_probe';
 
 // Actions
 // =====================
@@ -82,11 +84,14 @@ export const requestReports = () => ({
   type: REQUEST_REPORTS
 })
 
-export const receiveReportsSuccess = (json) => ({
-  type: RECEIVE_REPORTS_SUCCESS,
-  reports: json.map((report) => new Report(report)),
-  receivedAt: Date.now()
-})
+export const receiveReportsSuccess = (json) => {
+  return ({
+    type: RECEIVE_REPORTS_SUCCESS,
+    reports: json.map((report) => new Report(report)),
+    receivedAt: Date.now()
+  })
+}
+
 
 export const receiveReportsFailure = (json, errors) => ({
   type: RECEIVE_REPORTS_SUCCESS,
