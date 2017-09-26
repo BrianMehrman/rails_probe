@@ -7,7 +7,8 @@ import {
   BASE_ROUTE,
   fetchReport,
   getListenerState,
-  toggleListenerIfNeeded
+  toggleListenerIfNeeded,
+  deleteAllReportsIfNeeded
 } from '../actions';
 
 import TimeHeader from './TimeHeader';
@@ -111,6 +112,10 @@ class ReportView extends Component {
     this.props.dispatch(toggleListenerIfNeeded());
   }
 
+  deleteAllReports = () => {
+    this.props.dispatch(deleteAllReportsIfNeeded());
+  }
+
   render() {
     const { selectedReport, isListening, history } = this.props;
     const prints = (selectedReport && selectedReport.prints) || [];
@@ -132,7 +137,8 @@ class ReportView extends Component {
           <Box direction='column' full='horizontal'>
             <TimeHeader
               isListening={isListening}
-              toggleListener={this.toggleListener} />
+              toggleListener={this.toggleListener}
+              deleteAllReports={this.deleteAllReports} />
           </Box>
         </Box>
         <Box direction='row'

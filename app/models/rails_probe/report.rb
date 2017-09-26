@@ -4,6 +4,8 @@ module RailsProbe
 
     serialize :data
 
+    before_destroy :delete_prints
+
     def attributes
       {
         id: nil,
@@ -27,6 +29,15 @@ module RailsProbe
     private
 
     Print = Struct.new(:name, :url, :type, :filepath)
+
+    # Delete all the files saved for each report
+    def delete_prints
+      raw_prints.each { |_k, v| delete_print(v) }
+    end
+
+    def delete_print(filepath)
+      File.delete(filepath) if File.exist?(filepath)
+    end
 
     def build_prints
       @raw_prints ||= raw_prints.map do |p|

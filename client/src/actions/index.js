@@ -1,6 +1,10 @@
 import Report from '../models/Report.js'
 
+
+
+
 // ROUTES
+// =====================
 export const BASE_ROUTE = '/rails_probe';
 
 // Actions
@@ -18,13 +22,15 @@ export const RECEIVE_REPORT_FAILURE = 'RECEIVE_REPORT_FAILURE';
 export const REQUEST_REPORTS = 'REQUEST_REPORTS';
 export const RECEIVE_REPORTS_SUCCESS = 'RECEIVE_REPORTS_SUCCESS';
 export const RECEIVE_REPORTS_FAILURE = 'RECEIVE_REPORTS_FAILURE';
+export const REQUEST_DELETE_ALL_REPORTS = 'REQUEST_DELETE_ALL_REPORTS';
+export const RECEIVE_DELETE_ALL_REPORTS_SUCCESS = 'RECEIVE_DELETE_ALL_REPORTS_SUCCESS';
+export const RECEIVE_DELETE_ALL_REPORTS_FAILURE = 'RECEIVE_DELETE_ALL_REPORTS_FAILURE';
 export const INVALIDATE_REPORTS = 'INVALIDATE_REPORTS';
 export const TOGGLE_RAILS_PROBE = 'TOGGLE_RAILS_PROBE';
 
 
-//----------------------
 //    Listener
-//----------------------
+// =====================
 
 export const requestListenerState = () => ({
   type: REQUEST_LISTENER_STATE
@@ -53,9 +59,8 @@ export const receiveListenerDisable = (json) => ({
   listenerEnabled: json.listening
 })
 
-//----------------------
 //    Reports
-//----------------------
+// =====================
 
 export const selectReport = (id) => ({
   type: SELECT_REPORT,
@@ -84,14 +89,11 @@ export const requestReports = () => ({
   type: REQUEST_REPORTS
 })
 
-export const receiveReportsSuccess = (json) => {
-  return ({
-    type: RECEIVE_REPORTS_SUCCESS,
-    reports: json.map((report) => new Report(report)),
-    receivedAt: Date.now()
-  })
-}
-
+export const receiveReportsSuccess = (json) => ({
+  type: RECEIVE_REPORTS_SUCCESS,
+  reports: json.map((report) => new Report(report)),
+  receivedAt: Date.now()
+})
 
 export const receiveReportsFailure = (json, errors) => ({
   type: RECEIVE_REPORTS_SUCCESS,
@@ -100,60 +102,31 @@ export const receiveReportsFailure = (json, errors) => ({
   errors
 })
 
-// ------------------------------- //
+export const requestDeleteAllReports = () => ({
+  type: REQUEST_DELETE_ALL_REPORTS
+})
+
+export const receiveDeleteAllReportsSuccess = (json) => ({
+  type: RECEIVE_DELETE_ALL_REPORTS_SUCCESS,
+  receivedAt: Date.now(),
+  json
+})
+
+export const receiveDeleteAllReportsFailure = (json, errors) => ({
+  type: RECEIVE_DELETE_ALL_REPORTS_FAILURE,
+  receivedAt: Date.now(),
+  json,
+  errors
+})
+
+//   Local Methods
+// =====================
 
 const shouldToggleListener = (isTogglingListener) => {
   if (isTogglingListener) {
     return false;
   }
   return true;
-}
-
-export const toggleListenerIfNeeded = () => (dispatch, getState) => {
-  const state = getState();
-  const { isTogglingListener } = state.listener;
-
-  if (shouldToggleListener(isTogglingListener)) {
-    return dispatch(toggleListener());
-  }
-}
-
-export const getListenerState = () => {
-  return (dispatch) => {
-    dispatch(requestListenerState());
-
-    const request = new Request( `${BASE_ROUTE}/listener`, { method: 'GET' });
-
-    fetch(request)
-      .then(response => response.json())
-      .then(json => dispatch(receiveListenerState(json)))
-  }
-}
-
-const toggleListener = () => {
-  return (dispatch, getState) => {
-    const state = getState();
-    const { isListening } = state.listener;
-
-    if (!isListening) {
-      dispatch(requestListenerEnable());
-
-      const request = new Request( `${BASE_ROUTE}/listener/on`, { method: 'GET' });
-
-      fetch(request)
-        .then(response => response.json())
-        .then(json => dispatch(receiveListenerEnable(json)))
-    }
-    else {
-      dispatch(requestListenerDisable());
-
-      const request = new Request( `${BASE_ROUTE}/listener/off`, { method: 'GET' });
-
-      fetch(request)
-        .then(response => response.json())
-        .then(json => dispatch(receiveListenerDisable(json)))
-    }
-  }
 }
 
 const shouldFetchReports = (state) => {
@@ -168,17 +141,98 @@ const shouldFetchReports = (state) => {
   return didInvalidate
 }
 
+const shouldDeleteReports = (isDeletingReports) => {
+  if (isDeletingReports) {
+    return false;
+  }
+  return true;
+}
+
+const toggleListener = () => {
+  return (dispatch, getState) => {
+    const state = getState();
+    const { isListening } = state.listener;
+
+    if (!isListening) {
+      dispatch(requestListenerEnable());
+
+      const request = new Request(`${BASE_ROUTE}/listener/on`, { method: 'GET' });
+
+      fetch(request)
+        .then(response => response.json())
+        .then(json => dispatch(receiveListenerEnable(json)))
+    }
+    else {
+      dispatch(requestListenerDisable());
+
+      const request = new Request(`${BASE_ROUTE}/listener/off`, { method: 'GET' });
+
+      fetch(request)
+        .then(response => response.json())
+        .then(json => dispatch(receiveListenerDisable(json)))
+    }
+  }
+}
+
+const deleteAllReports = () => {
+  return (dispatch) => {
+    dispatch(requestDeleteAllReports());
+
+    const request = new Request(`${BASE_ROUTE}/reports`, { method: 'DELETE' });
+
+    fetch(request)
+      .then(response => response.json())
+      .then(json => dispatch(receiveDeleteAllReportsSuccess(json)))
+      .catch(error => dispatch(receiveDeleteAllReportsFailure({  errors: [error] }, error.message)));
+
+  }
+}
+
+
+// Dispatch Methods
+// =====================
+
+export const toggleListenerIfNeeded = () => (dispatch, getState) => {
+  const state = getState();
+  const { isTogglingListener } = state.listener;
+
+  if (shouldToggleListener(isTogglingListener)) {
+    return dispatch(toggleListener());
+  }
+}
+
+export const deleteAllReportsIfNeeded = () => (dispatch, getState) => {
+  const state = getState();
+  const { isDeletingReports } = state.reports;
+
+  if (shouldDeleteReports(isDeletingReports)) {
+    return dispatch(deleteAllReports());
+  }
+}
+
 export const fetchReportsIfNeeded = () => (dispatch, getState) => {
   if (shouldFetchReports(getState())) {
     return dispatch(fetchReports());
   }
 }
 
-export function fetchReport(id) {
+export const getListenerState = () => {
+  return (dispatch) => {
+    dispatch(requestListenerState());
+
+    const request = new Request(`${BASE_ROUTE}/listener`, { method: 'GET' });
+
+    fetch(request)
+      .then(response => response.json())
+      .then(json => dispatch(receiveListenerState(json)))
+  }
+}
+
+export const fetchReport = (id) => {
   return (dispatch) => {
     dispatch(requestReport(id));
-console.log(id);
-    const request = new Request( `${BASE_ROUTE}/reports/${id}`, { method: 'GET' });
+
+    const request = new Request(`${BASE_ROUTE}/reports/${id}`, { method: 'GET' });
 
     fetch(request)
       .then(response => response.json())
@@ -187,11 +241,11 @@ console.log(id);
   }
 }
 
-export function fetchReports() {
+export const fetchReports = () => {
   return (dispatch) => {
     dispatch(requestReports());
 
-    const request = new Request( `${BASE_ROUTE}/reports`, { method: 'GET' });
+    const request = new Request(`${BASE_ROUTE}/reports`, { method: 'GET' });
 
     fetch(request)
       .then(response => response.json())

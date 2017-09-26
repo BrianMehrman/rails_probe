@@ -6,7 +6,8 @@ import {
   selectReport,
   fetchReportsIfNeeded,
   getListenerState,
-  toggleListenerIfNeeded
+  toggleListenerIfNeeded,
+  deleteAllReportsIfNeeded
 } from '../actions';
 
 import ReportsTable from './ReportsTable';
@@ -39,6 +40,10 @@ class TimelineDashboard extends Component {
     this.props.dispatch(toggleListenerIfNeeded());
   }
 
+  deleteAllReports = () => {
+    this.props.dispatch(deleteAllReportsIfNeeded());
+  }
+
   render() {
     const {
       reports,
@@ -54,7 +59,8 @@ class TimelineDashboard extends Component {
         colorIndex='neutral-2'>
         <TimeHeader
           isListening={isListening}
-          toggleListener={this.toggleListener} />
+          toggleListener={this.toggleListener}
+          deleteAllReports={this.deleteAllReports} />
         <TimeGraph reports={reports} />
         <ReportsTable
           reports={reports}

@@ -11149,3 +11149,42 @@ Unpermitted parameters: :id, :format
 Completed 200 OK in 67ms (Views: 65.8ms | ActiveRecord: 0.1ms)
 
 
+Started GET "/rails_probe/reports/" for ::1 at 2017-09-26 07:26:26 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RailsProbe::ReportsController#index as HTML
+  [1m[36mRailsProbe::Report Load (1.4ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 19ms (Views: 13.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/rails_probe/" for ::1 at 2017-09-26 07:26:32 -0500
+Processing by RailsProbe::ApplicationController#index as HTML
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/client/build/index.html within layouts/rails_probe/application
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/client/build/index.html within layouts/rails_probe/application (1.0ms)
+Completed 200 OK in 251ms (Views: 250.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-09-26 07:26:32 -0500
+Processing by RailsProbe::ApplicationController#main as CSS
+Started GET "/rails_probe/main.js" for ::1 at 2017-09-26 07:26:32 -0500
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/client/build/main.css
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/client/build/main.css (15.2ms)
+Completed 200 OK in 38ms (Views: 38.1ms | ActiveRecord: 0.0ms)
+
+
+  Rendering /Users/brian.mehrman/ruby_projects/engines/rails_probe/client/build/main.js
+  Rendered /Users/brian.mehrman/ruby_projects/engines/rails_probe/client/build/main.js (48.9ms)
+Completed 200 OK in 62ms (Views: 61.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-09-26 07:26:32 -0500
+Started GET "/rails_probe/reports" for ::1 at 2017-09-26 07:26:32 -0500
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms)
+
+
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+

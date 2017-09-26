@@ -23,6 +23,12 @@ module RailsProbe
       redirect_to reports_url, notice: 'Report was successfully destroyed.'
     end
 
+    def destory_all
+      @reports = Reports.all
+      @reports.destroy
+      redirect_to reports_url, notice: 'Reports were successfully destroyed.'
+    end
+
     def print
       report_print = @report.print(print_type)
       io = report_print ? File.expand_path(report_print, Rails.root) : 'No file found'

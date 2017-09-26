@@ -6,12 +6,16 @@ import {
   SELECT_REPORT,
   REQUEST_REPORT,
   RECEIVE_REPORT_SUCCESS,
-  RECEIVE_REPORT_FAILURE
+  RECEIVE_REPORT_FAILURE,
+  REQUEST_DELETE_ALL_REPORTS,
+  RECEIVE_DELETE_ALL_REPORTS_SUCCESS,
+  RECEIVE_DELETE_ALL_REPORTS_FAILURE
 } from '../actions';
 
 const initialState = {
   isFetching: false,
   isFetchingReport: false,
+  isDeletingReports: false,
   didInvalidate: true,
   reports: [],
   selectedReport: undefined
@@ -69,6 +73,22 @@ const reports = (state=initialState, action) => {
         ...state,
         isFetchingReport: false,
         selectedReport: action.selectedReport,
+        errors: action.errors
+      }
+    case REQUEST_DELETE_ALL_REPORTS:
+      return {
+        ...state,
+        isDeletingReports: true
+      }
+    case RECEIVE_DELETE_ALL_REPORTS_SUCCESS:
+      return {
+        ...state,
+        isDeletingReports: false,
+      }
+    case RECEIVE_DELETE_ALL_REPORTS_FAILURE:
+      return {
+        ...state,
+        isDeletingReports: false,
         errors: action.errors
       }
     default:
