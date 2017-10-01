@@ -27,7 +27,7 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.set("port", process.env.PORT || 3001);
+app.set("port", process.env.SERVER_PORT || 3001);
 app.listening = false;
 
 app.get("/rails_probe/reports", (req, res) => {

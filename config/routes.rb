@@ -3,7 +3,7 @@ RailsProbe::Engine.routes.draw do
   root to: 'application#index'
 
   resources :reports do
-    collection { delete '/', to: 'reports#destory_all' }
+    collection { delete 'remove', to: 'reports#destory_all' }
     member { get 'print/:file', to: 'reports#print' }
   end
   # get 'reports', to: 'reports#index'

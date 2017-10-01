@@ -178,7 +178,7 @@ const deleteAllReports = () => {
   return (dispatch) => {
     dispatch(requestDeleteAllReports());
 
-    const request = new Request(`${BASE_ROUTE}/reports`, { method: 'DELETE' });
+    const request = new Request(`${BASE_ROUTE}/reports/remove`, { method: 'DELETE' });
 
     fetch(request)
       .then(response => response.json())

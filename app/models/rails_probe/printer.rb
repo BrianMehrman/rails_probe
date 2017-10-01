@@ -26,7 +26,7 @@ module RailsProbe
     private
 
     def timestamp
-      DateTime.current.strftime('%Y%m%dT%H%M%S')
+      @timestamp ||= DateTime.current.strftime('%Y%m%dT%H%M%S')
     end
 
     def output_dir

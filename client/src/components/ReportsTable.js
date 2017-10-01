@@ -16,6 +16,7 @@ const ReportsTable = ({ reports }) => {
             <th>Id</th>
             <th>Hook</th>
             <th>Session</th>
+            <th>Created At</th>
           </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@ const ReportsTable = ({ reports }) => {
             <td><Link to={report.link()}>{report.id}</Link></td>
             <td>{report.hook}</td>
             <td>{report.session}</td>
+            <td>{report.start}</td>
           </tr>
         ))}
         </tbody>

@@ -24,8 +24,8 @@ module RailsProbe
     end
 
     def destory_all
-      @reports = Reports.all
-      @reports.destroy
+      @reports = Report.all
+      @reports.destroy_all
       redirect_to reports_url, notice: 'Reports were successfully destroyed.'
     end
 

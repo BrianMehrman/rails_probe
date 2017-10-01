@@ -10,7 +10,6 @@ import Revert from 'grommet/components/icons/base/Revert';
 const TimeHeader = ({ isListening, toggleListener, deleteAllReports }) => {
   const listeningLabel = isListening ? 'Disable' : 'Enable';
 
-console.log(isListening);
   return (
     <Header justify="center" colorIndex='neutral-1'>
       <Box
@@ -23,19 +22,24 @@ console.log(isListening);
       <Box pad={ 'small' }
         direction='column'
         colorIndex='light-2'>
-        <Box direction='row'
-          >
-          <Button icon={<Power />}
-            label={listeningLabel}
-            onClick={toggleListener}
-            critical={isListening}
-            />
-          <Button icon={<Revert />}
-            label='Reset'
-            size='small'
-            onClick={deleteAllReports}
-            critical={true}
-            />
+        <Box direction='row'>
+          <Box direction='row'
+            margin='small'>
+            <Button icon={<Power />}
+              label={listeningLabel}
+              onClick={toggleListener}
+              critical={isListening}
+              />
+          </Box>
+          <Box direction='row'
+            margin='small'>
+            <Button icon={<Revert />}
+              label='Reset'
+              size='small'
+              onClick={deleteAllReports}
+              critical={true}
+              />
+          </Box>
         </Box>
       </Box>
     </Header>

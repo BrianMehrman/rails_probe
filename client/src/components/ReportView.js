@@ -21,8 +21,25 @@ import Value from 'grommet/components/Value';
 import Book from 'grommet/components/icons/base/Book';
 import Attraction from 'grommet/components/icons/base/Attraction';
 import Monitor from 'grommet/components/icons/base/Monitor';
+import Clock from 'grommet/components/icons/base/Clock';
 import Button from 'grommet/components/Button';
 import CaretBack from 'grommet/components/icons/base/CaretBack';
+
+const ValueBox = (props) => {
+  const {value, label, icon} = props;
+
+  return (
+    <Box direction='row'
+      colorIndex='light-1'
+      margin='small'>
+      <Value value={value}
+        icon={icon}
+        label={label}
+        align='start'
+        />
+    </Box>
+  )
+}
 
 class DetailsView extends Component {
   static propTypes = {
@@ -34,33 +51,33 @@ class DetailsView extends Component {
       report
     } = this.props;
 
-    const { hook, session } = report || {};
+    const { hook, session, start } = report || {};
 
     const reportId = report && report.id;
 
     return (
       <Box
         direction='column'
-        size={{height: 'full', width: 'xlarge'}}
         justify='left'
+        size={{height: 'full', width: 'xxlarge'}}
         align='start'
         pad='small'
-        colorIndex='light-2'>
+        colorIndex='neutral-1'>
         <Heading>
           Details View
         </Heading>
-        <Value value={reportId}
+        <ValueBox value={reportId}
           icon={<Book />}
-          align='start'
           label='ID' />
-        <Value value={hook || 'None'}
+        <ValueBox value={hook || 'None'}
           icon={<Attraction />}
-          align='start'
           label='Hook' />
-        <Value value={session}
+        <ValueBox value={session}
           icon={<Monitor />}
-          align='start'
           label='Session' />
+        <ValueBox value={start}
+          icon={<Clock />}
+          label='Created At' />
       </Box>
     )
   }
@@ -78,15 +95,18 @@ class PrinterView extends Component {
     const url =`/${print.url}`;
     return (
       <Box
+        size={{height: 'full', width: 'xxlarge'}}
+        full='horizontal'
         pad='small'
-        size={{height: 'full', width: 'xlarge'}}
         direction='column'>
-        <Box direction='row'>
+        <Box direction='row'
+          >
           <Heading>
             {print.name}
           </Heading>
         </Box>
-        <Box direction='row'>
+        <Box direction='row'
+          >
             <iframe title={print.type} src={url} width='100%' height="400"></iframe>
         </Box>
       </Box>
@@ -113,7 +133,9 @@ class ReportView extends Component {
   }
 
   deleteAllReports = () => {
-    this.props.dispatch(deleteAllReportsIfNeeded());
+    const {dispatch, history} = this.props;
+    dispatch(deleteAllReportsIfNeeded());
+    history.push(BASE_ROUTE);
   }
 
   render() {
@@ -127,7 +149,7 @@ class ReportView extends Component {
         size='full'
         colorIndex='light-2'>
         <Box direction='row'
-          full='horizontal'>
+          >
           <Box direction='column'
             pad='small'>
             <Button icon={<CaretBack />}
@@ -142,12 +164,10 @@ class ReportView extends Component {
           </Box>
         </Box>
         <Box direction='row'
-          basis='full'>
-          <Tabs responsive={true}>
+          justify='center' >
+          <Tabs >
             <Tab title='Details'>
-              <Box direction='column' size='full' >
-                <DetailsView report={selectedReport} />
-              </Box>
+              <DetailsView report={selectedReport} />
             </Tab>
             { prints.map((print) => (
               <Tab title={print.type} >

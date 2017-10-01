@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
+  BASE_ROUTE,
   selectReport,
   fetchReportsIfNeeded,
   getListenerState,
@@ -41,7 +43,9 @@ class TimelineDashboard extends Component {
   }
 
   deleteAllReports = () => {
-    this.props.dispatch(deleteAllReportsIfNeeded());
+    const {dispatch, history} = this.props;
+    dispatch(deleteAllReportsIfNeeded());
+    history.push(BASE_ROUTE);
   }
 
   render() {
@@ -93,4 +97,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(TimelineDashboard);
+export default withRouter(connect(mapStateToProps)(TimelineDashboard));
