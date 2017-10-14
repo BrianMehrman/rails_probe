@@ -8,13 +8,15 @@ import {
   selectReport,
   fetchReportsIfNeeded,
   getListenerState,
+  getListenerConfig,
   toggleListenerIfNeeded,
-  deleteAllReportsIfNeeded
+  deleteAllReportsIfNeeded,
+  postListenerConfigIfNeeded
 } from '../actions';
 
 import ReportsTable from './ReportsTable';
 import TimeGraph from './TimeGraph';
-import TimeHeader from './TimeHeader';
+import MainHeader from './MainHeader';
 
 import Box from 'grommet/components/Box';
 
@@ -25,6 +27,7 @@ class TimelineDashboard extends Component {
     isFetching: PropTypes.bool,
     isFetchingReport: PropTypes.bool,
     isListening: PropTypes.bool,
+    listenerConfig: PropTypes.object,
     dispatch: PropTypes.func.isRequired
   }
 
@@ -32,6 +35,11 @@ class TimelineDashboard extends Component {
     const { dispatch } = this.props;
     dispatch(fetchReportsIfNeeded());
     dispatch(getListenerState());
+    dispatch(getListenerConfig());
+  }
+
+  updateListenerConfig = (config) => {
+    this.props.dispatch(postListenerConfigIfNeeded(config));
   }
 
   selectReport = report => {
@@ -52,8 +60,9 @@ class TimelineDashboard extends Component {
     const {
       reports,
       selectedReport,
-      isListening
-     } = this.props;
+      isListening,
+      listenerConfig
+    } = this.props;
 
     return (
       <Box direction='column'
@@ -61,8 +70,10 @@ class TimelineDashboard extends Component {
         pad='none'
         justify='center'
         colorIndex='neutral-2'>
-        <TimeHeader
+        <MainHeader
           isListening={isListening}
+          listenerConfig={listenerConfig}
+          onListenerConfigChange={this.updateListenerConfig}
           toggleListener={this.toggleListener}
           deleteAllReports={this.deleteAllReports} />
         <TimeGraph reports={reports} />
@@ -83,9 +94,9 @@ const mapStateToProps = state => {
       isFetchingReport
   } = state.reports;
 
-
   const {
-    isListening
+    isListening,
+    listenerConfig
   } = state.listener;
 
   return {
@@ -93,7 +104,8 @@ const mapStateToProps = state => {
     reports,
     isFetching,
     isFetchingReport,
-    isListening
+    isListening,
+    listenerConfig
   }
 }
 

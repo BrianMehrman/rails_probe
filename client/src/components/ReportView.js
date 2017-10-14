@@ -7,11 +7,13 @@ import {
   BASE_ROUTE,
   fetchReport,
   getListenerState,
+  getListenerConfig,
   toggleListenerIfNeeded,
-  deleteAllReportsIfNeeded
+  deleteAllReportsIfNeeded,
+  postListenerConfigIfNeeded
 } from '../actions';
 
-import TimeHeader from './TimeHeader';
+import MainHeader from './MainHeader';
 
 import Box from 'grommet/components/Box';
 import Tabs from 'grommet/components/Tabs';
@@ -117,6 +119,7 @@ class PrinterView extends Component {
 class ReportView extends Component {
   static propTypes = {
     selectedReport: PropTypes.object,
+    listenerConfig: PropTypes.object,
     isFetchingReport: PropTypes.bool,
     isListening: PropTypes.bool,
     dispatch: PropTypes.func.isRequired
@@ -126,6 +129,7 @@ class ReportView extends Component {
     const { dispatch, selectedReport } = this.props;
     dispatch(fetchReport(selectedReport.id));
     dispatch(getListenerState());
+    dispatch(getListenerConfig());
   }
 
   toggleListener = () => {
@@ -138,8 +142,12 @@ class ReportView extends Component {
     history.push(BASE_ROUTE);
   }
 
+  updateConfig = (config) => {
+    this.props.dispatch(postListenerConfigIfNeeded(config));
+  }
+
   render() {
-    const { selectedReport, isListening, history } = this.props;
+    const { selectedReport, isListening, history, listenerConfig } = this.props;
     const prints = (selectedReport && selectedReport.prints) || [];
 
     return (
@@ -157,9 +165,11 @@ class ReportView extends Component {
               />
           </Box>
           <Box direction='column' full='horizontal'>
-            <TimeHeader
+            <MainHeader
               isListening={isListening}
               toggleListener={this.toggleListener}
+              listenerConfig={listenerConfig}
+              onListenerConfigChange={this.updateConfig}
               deleteAllReports={this.deleteAllReports} />
           </Box>
         </Box>
@@ -189,7 +199,8 @@ const mapStateToProps = (state, ownProps) => {
   let { selectedReport } = state.reports;
 
   const {
-    isListening
+    isListening,
+    listenerConfig
   } = state.listener;
 
   const { match } = ownProps;
@@ -203,7 +214,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     selectedReport,
     isFetchingReport,
-    isListening
+    isListening,
+    listenerConfig
   }
 }
 

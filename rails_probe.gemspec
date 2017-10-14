@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '~> 5.1.0'
+  s.add_dependency 'rails', '~> 5.0.0'
   s.add_dependency 'ruby-prof', '~>0.16.2'
   s.add_dependency 'jquery-rails', '~>4.3.1'
   s.add_dependency 'active_model_serializers', '~> 0.9.7'

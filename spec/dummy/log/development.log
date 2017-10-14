@@ -14137,3 +14137,525 @@ Processing by RailsProbe::ListenerController#off as */*
 Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/rails_probe" for ::1 at 2017-10-01 21:24:40 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RailsProbe::ApplicationController#index as HTML
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/index.html within layouts/rails_probe/application
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/index.html within layouts/rails_probe/application (1.6ms)
+Completed 200 OK in 246ms (Views: 245.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-01 21:24:40 -0500
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (47.8ms)
+Completed 200 OK in 57ms (Views: 56.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-01 21:24:41 -0500
+Processing by RailsProbe::ApplicationController#main as CSS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (12.5ms)
+Completed 200 OK in 23ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-01 21:24:41 -0500
+Started GET "/rails_probe/reports" for ::1 at 2017-10-01 21:24:41 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Processing by RailsProbe::ReportsController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rails_probe/listener/on" for ::1 at 2017-10-01 21:24:44 -0500
+Processing by RailsProbe::ListenerController#on as */*
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/recipes" for ::1 at 2017-10-01 21:24:48 -0500
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (15.6ms)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "rails_probe_reports" ("id", "host", "session", "action", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", "a60e3855-11d2-42d5-92b8-f385c2de5513"], ["host", "localhost"], ["session", "c7749e4edfa5792bda616db8afc7fb44"], ["action", "recipes#index"], ["data", "---\n:prints:\n  Graph HTML: tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022448/graph.html\n  Call Stack: tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022449/call_stack.html\n"], ["created_at", "2017-10-02 02:24:49.382430"], ["updated_at", "2017-10-02 02:24:49.382430"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 1195ms (Views: 60.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/recipes/1/edit" for ::1 at 2017-10-01 21:24:51 -0500
+Processing by RecipesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/edit.html.erb within layouts/application
+  Rendered recipes/_form.html.erb (23.0ms) [cache miss]
+  Rendered recipes/edit.html.erb within layouts/application (25.1ms)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rails_probe_reports" ("id", "host", "session", "action", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", "67f61c76-aaf7-4af6-8123-c92a4e698d50"], ["host", "localhost"], ["session", "c7749e4edfa5792bda616db8afc7fb44"], ["action", "recipes#edit(1)"], ["data", "---\n:prints:\n  Graph HTML: tmp/ruby_profiles/development/67f61c76-aaf7-4af6-8123-c92a4e698d50/20171002T022451/graph.html\n  Call Stack: tmp/ruby_profiles/development/67f61c76-aaf7-4af6-8123-c92a4e698d50/20171002T022452/call_stack.html\n"], ["created_at", "2017-10-02 02:24:52.543504"], ["updated_at", "2017-10-02 02:24:52.543504"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 1113ms (Views: 52.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/recipes/1" for ::1 at 2017-10-01 21:24:53 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (2.2ms)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rails_probe_reports" ("id", "host", "session", "action", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", "d5c57678-100e-4ff1-a7af-27381796218e"], ["host", "localhost"], ["session", "c7749e4edfa5792bda616db8afc7fb44"], ["action", "recipes#show(1)"], ["data", "---\n:prints:\n  Graph HTML: tmp/ruby_profiles/development/d5c57678-100e-4ff1-a7af-27381796218e/20171002T022453/graph.html\n  Call Stack: tmp/ruby_profiles/development/d5c57678-100e-4ff1-a7af-27381796218e/20171002T022454/call_stack.html\n"], ["created_at", "2017-10-02 02:24:54.634714"], ["updated_at", "2017-10-02 02:24:54.634714"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 707ms (Views: 27.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/recipes/1/edit" for ::1 at 2017-10-01 21:24:55 -0500
+Processing by RecipesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/edit.html.erb within layouts/application
+  Rendered recipes/_form.html.erb (4.4ms) [cache miss]
+  Rendered recipes/edit.html.erb within layouts/application (6.3ms)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rails_probe_reports" ("id", "host", "session", "action", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", "e08768bf-4878-47a3-817d-45595fbcc968"], ["host", "localhost"], ["session", "c7749e4edfa5792bda616db8afc7fb44"], ["action", "recipes#edit(1)"], ["data", "---\n:prints:\n  Graph HTML: tmp/ruby_profiles/development/e08768bf-4878-47a3-817d-45595fbcc968/20171002T022455/graph.html\n  Call Stack: tmp/ruby_profiles/development/e08768bf-4878-47a3-817d-45595fbcc968/20171002T022456/call_stack.html\n"], ["created_at", "2017-10-02 02:24:56.696905"], ["updated_at", "2017-10-02 02:24:56.696905"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 854ms (Views: 33.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/recipes" for ::1 at 2017-10-01 21:24:58 -0500
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (4.6ms)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rails_probe_reports" ("id", "host", "session", "action", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", "4e1011f4-8e64-4d97-b0d7-7450ef104935"], ["host", "localhost"], ["session", "c7749e4edfa5792bda616db8afc7fb44"], ["action", "recipes#index"], ["data", "---\n:prints:\n  Graph HTML: tmp/ruby_profiles/development/4e1011f4-8e64-4d97-b0d7-7450ef104935/20171002T022458/graph.html\n  Call Stack: tmp/ruby_profiles/development/4e1011f4-8e64-4d97-b0d7-7450ef104935/20171002T022458/call_stack.html\n"], ["created_at", "2017-10-02 02:24:58.793933"], ["updated_at", "2017-10-02 02:24:58.793933"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 694ms (Views: 32.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes/new" for ::1 at 2017-10-01 21:25:09 -0500
+Processing by RecipesController#new as HTML
+  Rendering recipes/new.html.erb within layouts/application
+  Rendered recipes/_form.html.erb (4.3ms) [cache miss]
+  Rendered recipes/new.html.erb within layouts/application (6.3ms)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rails_probe_reports" ("id", "host", "session", "action", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", "3a28396c-28a4-4243-a16a-4c8da3ccdc61"], ["host", "localhost"], ["session", "c7749e4edfa5792bda616db8afc7fb44"], ["action", "recipes#new"], ["data", "---\n:prints:\n  Graph HTML: tmp/ruby_profiles/development/3a28396c-28a4-4243-a16a-4c8da3ccdc61/20171002T022509/graph.html\n  Call Stack: tmp/ruby_profiles/development/3a28396c-28a4-4243-a16a-4c8da3ccdc61/20171002T022510/call_stack.html\n"], ["created_at", "2017-10-02 02:25:10.533387"], ["updated_at", "2017-10-02 02:25:10.533387"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 801ms (Views: 33.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rails_probe" for ::1 at 2017-10-01 21:25:15 -0500
+Processing by RailsProbe::ApplicationController#index as HTML
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/index.html within layouts/rails_probe/application
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/index.html within layouts/rails_probe/application (0.2ms)
+Completed 200 OK in 16ms (Views: 15.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-01 21:25:15 -0500
+Processing by RailsProbe::ApplicationController#main as CSS
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-01 21:25:15 -0500
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (12.9ms)
+Completed 200 OK in 29ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (57.4ms)
+Completed 200 OK in 81ms (Views: 80.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports" for ::1 at 2017-10-01 21:25:15 -0500
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-01 21:25:15 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-01 21:25:20 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports/a60e3855-11d2-42d5-92b8-f385c2de5513" for ::1 at 2017-10-01 21:25:20 -0500
+Processing by RailsProbe::ReportsController#show as */*
+  Parameters: {"id"=>"a60e3855-11d2-42d5-92b8-f385c2de5513"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "a60e3855-11d2-42d5-92b8-f385c2de5513"], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rails_probe/reports/a60e3855-11d2-42d5-92b8-f385c2de5513/print/graph-html.html" for ::1 at 2017-10-01 21:25:42 -0500
+Processing by RailsProbe::ReportsController#print as HTML
+  Parameters: {"id"=>"a60e3855-11d2-42d5-92b8-f385c2de5513", "file"=>"graph-html"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "a60e3855-11d2-42d5-92b8-f385c2de5513"], ["LIMIT", 1]]
+Unpermitted parameters: :id, :format
+Unpermitted parameters: :id, :format
+  Rendering tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022448/graph.html
+  Rendered tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022448/graph.html (144.4ms)
+Completed 200 OK in 176ms (Views: 175.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rails_probe/reports/a60e3855-11d2-42d5-92b8-f385c2de5513/print/call-stack.html" for ::1 at 2017-10-01 21:25:43 -0500
+Processing by RailsProbe::ReportsController#print as HTML
+  Parameters: {"id"=>"a60e3855-11d2-42d5-92b8-f385c2de5513", "file"=>"call-stack"}
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "a60e3855-11d2-42d5-92b8-f385c2de5513"], ["LIMIT", 1]]
+Unpermitted parameters: :id, :format
+Unpermitted parameters: :id, :format
+  Rendering tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022449/call_stack.html
+  Rendered tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022449/call_stack.html (51.0ms)
+Completed 200 OK in 61ms (Views: 58.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rails_probe/reports/a60e3855-11d2-42d5-92b8-f385c2de5513/print/graph-html.html" for ::1 at 2017-10-01 21:25:55 -0500
+Processing by RailsProbe::ReportsController#print as HTML
+  Parameters: {"id"=>"a60e3855-11d2-42d5-92b8-f385c2de5513", "file"=>"graph-html"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "a60e3855-11d2-42d5-92b8-f385c2de5513"], ["LIMIT", 1]]
+Unpermitted parameters: :id, :format
+Unpermitted parameters: :id, :format
+  Rendering tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022448/graph.html
+  Rendered tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022448/graph.html (170.9ms)
+Completed 200 OK in 286ms (Views: 285.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rails_probe/reports/a60e3855-11d2-42d5-92b8-f385c2de5513/print/call-stack.html" for ::1 at 2017-10-01 21:25:58 -0500
+Processing by RailsProbe::ReportsController#print as HTML
+  Parameters: {"id"=>"a60e3855-11d2-42d5-92b8-f385c2de5513", "file"=>"call-stack"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "a60e3855-11d2-42d5-92b8-f385c2de5513"], ["LIMIT", 1]]
+Unpermitted parameters: :id, :format
+Unpermitted parameters: :id, :format
+  Rendering tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022449/call_stack.html
+  Rendered tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022449/call_stack.html (61.1ms)
+Completed 200 OK in 69ms (Views: 67.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rails_probe/reports/a60e3855-11d2-42d5-92b8-f385c2de5513/print/graph-html.html" for ::1 at 2017-10-01 21:26:00 -0500
+Processing by RailsProbe::ReportsController#print as HTML
+  Parameters: {"id"=>"a60e3855-11d2-42d5-92b8-f385c2de5513", "file"=>"graph-html"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "a60e3855-11d2-42d5-92b8-f385c2de5513"], ["LIMIT", 1]]
+Unpermitted parameters: :id, :format
+Unpermitted parameters: :id, :format
+  Rendering tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022448/graph.html
+  Rendered tmp/ruby_profiles/development/a60e3855-11d2-42d5-92b8-f385c2de5513/20171002T022448/graph.html (146.3ms)
+Completed 200 OK in 156ms (Views: 154.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rails_probe/listener/off" for ::1 at 2017-10-01 21:26:23 -0500
+Processing by RailsProbe::ListenerController#off as */*
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-01 21:26:25 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports/3a28396c-28a4-4243-a16a-4c8da3ccdc61" for ::1 at 2017-10-01 21:26:40 -0500
+Processing by RailsProbe::ReportsController#show as */*
+  Parameters: {"id"=>"3a28396c-28a4-4243-a16a-4c8da3ccdc61"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "3a28396c-28a4-4243-a16a-4c8da3ccdc61"], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-01 21:26:40 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports/3a28396c-28a4-4243-a16a-4c8da3ccdc61/print/call-stack.html" for ::1 at 2017-10-01 21:26:41 -0500
+Processing by RailsProbe::ReportsController#print as HTML
+  Parameters: {"id"=>"3a28396c-28a4-4243-a16a-4c8da3ccdc61", "file"=>"call-stack"}
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT  "rails_probe_reports".* FROM "rails_probe_reports" WHERE "rails_probe_reports"."id" = ? LIMIT ?[0m  [["id", "3a28396c-28a4-4243-a16a-4c8da3ccdc61"], ["LIMIT", 1]]
+Unpermitted parameters: :id, :format
+Unpermitted parameters: :id, :format
+  Rendering tmp/ruby_profiles/development/3a28396c-28a4-4243-a16a-4c8da3ccdc61/20171002T022510/call_stack.html
+  Rendered tmp/ruby_profiles/development/3a28396c-28a4-4243-a16a-4c8da3ccdc61/20171002T022510/call_stack.html (44.9ms)
+Completed 200 OK in 52ms (Views: 50.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-01 21:26:51 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-07 16:50:48 -0500
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-07 16:50:48 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RailsProbe::ApplicationController#main as CSS
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (11.0ms)
+Completed 200 OK in 27ms (Views: 26.8ms | ActiveRecord: 0.0ms)
+
+
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (32.6ms)
+Completed 200 OK in 65ms (Views: 64.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports" for ::1 at 2017-10-07 16:50:48 -0500
+Processing by RailsProbe::ReportsController#index as */*
+Started GET "/rails_probe/listener" for ::1 at 2017-10-07 16:50:48 -0500
+  [1m[36mRailsProbe::Report Load (0.4ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Processing by RailsProbe::ListenerController#index as */*
+Completed 200 OK in 25ms (Views: 13.6ms | ActiveRecord: 1.4ms)
+
+
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/listener/on" for ::1 at 2017-10-07 16:51:27 -0500
+Processing by RailsProbe::ListenerController#on as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/listener/off" for ::1 at 2017-10-07 16:51:28 -0500
+Processing by RailsProbe::ListenerController#off as */*
+Completed 202 Accepted in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-08 08:12:15 -0500
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-08 08:12:15 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RailsProbe::ApplicationController#main as JS
+Processing by RailsProbe::ApplicationController#main as CSS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (34.4ms)
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (11.8ms)
+Completed 200 OK in 65ms (Views: 64.3ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 63ms (Views: 62.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-08 08:12:16 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports" for ::1 at 2017-10-08 08:12:16 -0500
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (0.3ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 12ms (Views: 8.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-08 14:25:10 -0500
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-08 14:25:10 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RailsProbe::ApplicationController#main as CSS
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (14.2ms)
+Completed 200 OK in 36ms (Views: 35.2ms | ActiveRecord: 0.0ms)
+
+
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (44.3ms)
+Completed 200 OK in 87ms (Views: 86.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports" for ::1 at 2017-10-08 14:25:11 -0500
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (0.1ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Started GET "/rails_probe/listener" for ::1 at 2017-10-08 14:25:11 -0500
+Completed 200 OK in 19ms (Views: 15.2ms | ActiveRecord: 0.8ms)
+
+
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-08 19:58:54 -0500
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-08 19:58:54 -0500
+Processing by RailsProbe::ApplicationController#main as CSS
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (15.3ms)
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+Completed 200 OK in 43ms (Views: 42.9ms | ActiveRecord: 0.0ms)
+
+
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (45.1ms)
+Completed 200 OK in 84ms (Views: 84.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports" for ::1 at 2017-10-08 19:58:55 -0500
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (0.3ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-08 19:58:55 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-08 21:00:15 -0500
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-08 21:00:15 -0500
+Processing by RailsProbe::ApplicationController#main as CSS
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (24.0ms)
+Completed 200 OK in 100ms (Views: 98.8ms | ActiveRecord: 0.0ms)
+
+
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (122.6ms)
+Completed 200 OK in 168ms (Views: 167.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports" for ::1 at 2017-10-08 21:00:17 -0500
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-08 21:00:17 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-09 18:46:14 -0500
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-09 18:46:14 -0500
+Processing by RailsProbe::ApplicationController#main as CSS
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (12.1ms)
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+Completed 200 OK in 30ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (65.5ms)
+Completed 200 OK in 92ms (Views: 88.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports" for ::1 at 2017-10-09 18:46:15 -0500
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-09 18:46:15 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-09 22:01:15 -0500
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-09 22:01:15 -0500
+Processing by RailsProbe::ApplicationController#main as CSS
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (12.5ms)
+Completed 200 OK in 28ms (Views: 27.3ms | ActiveRecord: 0.0ms)
+
+
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (36.4ms)
+Completed 200 OK in 66ms (Views: 65.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports" for ::1 at 2017-10-09 22:01:15 -0500
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-09 22:01:15 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-11 22:17:26 -0500
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-11 22:17:26 -0500
+Processing by RailsProbe::ApplicationController#main as CSS
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (17.2ms)
+Completed 200 OK in 36ms (Views: 34.6ms | ActiveRecord: 0.0ms)
+
+
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (66.7ms)
+Completed 200 OK in 110ms (Views: 109.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/reports" for ::1 at 2017-10-11 22:17:26 -0500
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (6.4ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 12ms (Views: 5.0ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-11 22:17:26 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-13 12:00:36 -0500
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-13 12:00:36 -0500
+  
+  
+Started GET "/recipes/new" for ::1 at 2017-10-14 10:40:04 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RecipesController#new as HTML
+  Rendering recipes/new.html.erb within layouts/application
+  Rendered recipes/_form.html.erb (11.2ms)
+  Rendered recipes/new.html.erb within layouts/application (13.7ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.4ms)
+
+
+
+NoMethodError - undefined method `form_with' for #<#<Class:0x007f8e49df4b28>:0x007f8e49dddb30>
+Did you mean?  form_tag:
+  app/views/recipes/_form.html.erb:1:in `_app_views_recipes__form_html_erb__2697187128658331660_70124550500280'
+  app/views/recipes/new.html.erb:3:in `_app_views_recipes_new_html_erb___612256227893592440_70124550730100'
+
+Started POST "/__better_errors/0e911ca5e69a59b3/variables" for ::1 at 2017-10-14 10:40:04 -0500
+Started GET "/recipes/new" for ::1 at 2017-10-14 10:41:21 -0500
+Processing by RecipesController#new as HTML
+  Rendering recipes/new.html.erb within layouts/application
+  Rendered recipes/_form.html.erb (19.5ms)
+  Rendered recipes/new.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 430ms (Views: 428.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe" for ::1 at 2017-10-14 10:41:26 -0500
+Processing by RailsProbe::ApplicationController#index as HTML
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/index.html within layouts/rails_probe/application
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/index.html within layouts/rails_probe/application (0.2ms)
+Completed 200 OK in 63ms (Views: 62.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/main.css" for ::1 at 2017-10-14 10:41:26 -0500
+Processing by RailsProbe::ApplicationController#main as CSS
+Started GET "/rails_probe/main.js" for ::1 at 2017-10-14 10:41:26 -0500
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css
+Processing by RailsProbe::ApplicationController#main as JS
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.css (29.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+  Rendering /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js
+  Rendered /Users/brianmehrman/ruby_projects/gems/rails_probe/client/build/main.js (32.7ms)
+Completed 200 OK in 45ms (Views: 44.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails_probe/listener" for ::1 at 2017-10-14 10:41:26 -0500
+Processing by RailsProbe::ListenerController#index as */*
+Started GET "/rails_probe/reports" for ::1 at 2017-10-14 10:41:26 -0500
+Completed 202 Accepted in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Processing by RailsProbe::ReportsController#index as */*
+  [1m[36mRailsProbe::Report Load (0.2ms)[0m  [1m[34mSELECT "rails_probe_reports".* FROM "rails_probe_reports"[0m
+Completed 200 OK in 14ms (Views: 8.4ms | ActiveRecord: 0.6ms)
+
+

@@ -4,12 +4,22 @@ import {
   REQUEST_LISTENER_ENABLE,
   RECEIVE_LISTENER_ENABLE,
   REQUEST_LISTENER_DISABLE,
-  RECEIVE_LISTENER_DISABLE
+  RECEIVE_LISTENER_DISABLE,
+  REQUEST_LISTENER_CONFIG,
+  RECEIVE_LISTENER_CONFIG,
+  RECEIVE_POST_LISTENER_CONFIG,
+  REQUEST_POST_LISTENER_CONFIG
 } from '../actions';
 
 const listenerState = {
   isListening: false,
-  isTogglingListener: false
+  isTogglingListener: false,
+  isPostingListenerConfig: false,
+  listenerConfig: {
+    graphText: false,
+    graphHtml: false,
+    callStack: false
+  }
 };
 
 const listener = (state=listenerState, action) => {
@@ -46,6 +56,24 @@ const listener = (state=listenerState, action) => {
         ...state,
         isListening: action.listenerEnabled,
         isTogglingListener: false
+      }
+    case REQUEST_LISTENER_CONFIG:
+      return state
+    case RECEIVE_LISTENER_CONFIG:
+      return {
+        ...state,
+        listenerConfig: action.listenerConfig
+      }
+    case REQUEST_POST_LISTENER_CONFIG:
+      return {
+        ...state,
+        isPostingListenerConfig: true
+      }
+    case RECEIVE_POST_LISTENER_CONFIG:
+      return {
+        ...state,
+        isPostingListenerConfig: false,
+        listenerConfig: action.listenerConfig
       }
     default:
       return state;

@@ -1,4 +1,10 @@
+
 const express = require("express");
+const bodyParser = require('body-parser');
+const multer = require('multer'); // v1.0.5
+const upload = multer(); // for parsing multipart/form-data
+
+
 
 const reports = [
   {"id":"26370f76-6b8a-4610-b139-cbaff290f838","host":"localhost","session":"246b954584bb833c6977a4a566cbc3d7","action":"recipes#index","created_at":"2017-09-02T14:37:26.575Z","prints":[{"name":"Graph HTML","url":"public/ruby_profiles/development/26370f76-6b8a-4610-b139-cbaff290f838/20170902T143726/graph.html","type":"graph-html"},{"name":"Call Stack","url":"public/ruby_profiles/development/26370f76-6b8a-4610-b139-cbaff290f838/20170902T143726/call_stack.html","type":"call-stack"}]},
@@ -28,7 +34,18 @@ const app = express();
 app.use(express.static('public'));
 
 app.set("port", process.env.SERVER_PORT || 3001);
-app.listening = false;
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+app.listener = {
+  enabled: false,
+  config: {
+    graphText: false,
+    graphHtml: false,
+    callStack: false
+  }
+};
 
 app.get("/rails_probe/reports", (req, res) => {
   res.json(reports);
@@ -39,18 +56,31 @@ app.get("/rails_probe/reports/:id", (req, res) => {
   res.json(report);
 });
 
+app.get("/rails_probe/listener/config", (req, res) => {
+  const { config } = app.listener;
+  res.json(config);
+});
+
+app.post("/rails_probe/listener/config", (req, res) => {
+  app.listener.config = req.body;
+  res.json(app.listener.config);
+});
+
 app.get("/rails_probe/listener/on", (req, res) => {
-  app.listening = true;
-  res.json({ "listening": app.listening });
+  app.listener.enabled = true;
+  res.json({ "listening": app.listener.enabled });
 });
 
 app.get("/rails_probe/listener/off", (req, res) => {
-  app.listening = false;
-  res.json({ "listening": app.listening });
+  app.listener.enabled = false;
+
+  res.json({ "listening": app.listener.enabled });
 });
 
 app.get("/rails_probe/listener", (req, res) => {
-  res.json({"listening": app.listening });
+  const { enabled } = app.listener;
+
+  res.json({ "listening": enabled });
 });
 
 app.listen(app.get("port"), () => {

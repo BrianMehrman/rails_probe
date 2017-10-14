@@ -1,8 +1,5 @@
 import Report from '../models/Report.js'
 
-
-
-
 // ROUTES
 // =====================
 export const BASE_ROUTE = '/rails_probe';
@@ -15,6 +12,10 @@ export const REQUEST_LISTENER_ENABLE = 'REQUEST_LISTENER_ENABLE';
 export const RECEIVE_LISTENER_ENABLE = 'RECEIVE_LISTENER_ENABLE';
 export const REQUEST_LISTENER_DISABLE = 'REQUEST_LISTENER_DISABLE';
 export const RECEIVE_LISTENER_DISABLE = 'RECEIVE_LISTENER_DISABLE';
+export const REQUEST_LISTENER_CONFIG = 'REQUEST_LISTENER_CONFIG';
+export const RECEIVE_LISTENER_CONFIG = 'RECEIVE_LISTENER_CONFIG';
+export const REQUEST_POST_LISTENER_CONFIG = 'REQUEST_POST_LISTENER_CONFIG';
+export const RECEIVE_POST_LISTENER_CONFIG = 'RECEIVE_POST_LISTENER_CONFIG';
 export const SELECT_REPORT = 'SELECT_REPORT';
 export const REQUEST_REPORT = 'REQUEST_REPORT';
 export const RECEIVE_REPORT_SUCCESS = 'RECEIVE_REPORT_SUCCESS';
@@ -57,6 +58,24 @@ export const requestListenerDisable = () => ({
 export const receiveListenerDisable = (json) => ({
   type: RECEIVE_LISTENER_DISABLE,
   listenerEnabled: json.listening
+})
+
+export const requestListenerConfig = () => ({
+  type: REQUEST_LISTENER_CONFIG
+})
+
+export const receiveListenerConfig = (json) => ({
+  type: RECEIVE_LISTENER_CONFIG,
+  listenerConfig: json
+})
+
+export const requestPostListenerConfig = () => ({
+  type: REQUEST_POST_LISTENER_CONFIG
+})
+
+export const receivePostListenerConfig = (json) => ({
+  type: RECEIVE_POST_LISTENER_CONFIG,
+  listenerConfig: json
 })
 
 //    Reports
@@ -148,6 +167,38 @@ const shouldDeleteReports = (isDeletingReports) => {
   return true;
 }
 
+const shouldPostListenerConfig = (isPostingListenerConfig) => {
+  if (isPostingListenerConfig) {
+    return false;
+  }
+  return true;
+}
+
+const postListenerConfig = (config) => {
+  return (dispatch, getState) => {
+    const state = getState();
+    const { isPostingListenerConfig } = state.listener;
+
+    if (!isPostingListenerConfig) {
+      dispatch(requestPostListenerConfig());
+
+      const params = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(config)
+      };
+
+      const request = new Request(`${BASE_ROUTE}/listener/config`, params);
+
+      fetch(request)
+        .then(response => response.json())
+        .then(json => dispatch(receivePostListenerConfig(json)))
+    }
+  }
+}
+
 const toggleListener = () => {
   return (dispatch, getState) => {
     const state = getState();
@@ -191,6 +242,14 @@ const deleteAllReports = () => {
 
 // Dispatch Methods
 // =====================
+export const postListenerConfigIfNeeded = (config) => (dispatch, getState) => {
+  const state = getState();
+  const { isPostingListenerConfig } = state.listener;
+
+  if (shouldPostListenerConfig(isPostingListenerConfig)) {
+    return dispatch(postListenerConfig(config));
+  }
+}
 
 export const toggleListenerIfNeeded = () => (dispatch, getState) => {
   const state = getState();
@@ -216,6 +275,18 @@ export const fetchReportsIfNeeded = () => (dispatch, getState) => {
   }
 }
 
+export const getListenerConfig = () => {
+  return (dispatch) => {
+    dispatch(requestListenerConfig());
+
+    const request = new Request(`${BASE_ROUTE}/listener/config`, { method: 'GET' });
+
+    fetch(request)
+      .then(response => response.json())
+      .then(json => dispatch(receiveListenerConfig(json)));
+  }
+}
+
 export const getListenerState = () => {
   return (dispatch) => {
     dispatch(requestListenerState());
@@ -224,7 +295,7 @@ export const getListenerState = () => {
 
     fetch(request)
       .then(response => response.json())
-      .then(json => dispatch(receiveListenerState(json)))
+      .then(json => dispatch(receiveListenerState(json)));
   }
 }
 
