@@ -12,6 +12,8 @@ RailsProbe::Engine.routes.draw do
   get 'listener', to: 'listener#index'
   get 'listener/on', to: 'listener#on'
   get 'listener/off', to: 'listener#off'
+  get 'listener/config', to: 'listener#config'
+  post 'listener/config', to: 'listener#update_config'
 
   get ':id', to: 'application#index'
 end

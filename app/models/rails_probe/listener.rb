@@ -36,7 +36,7 @@ module RailsProbe
           session: session.try(:id),
           host: request.try(:host),
           user_id: user.try(:id),
-          printers: [Printers::GraphHtml.name, Printers::CallStack.name]
+          printers: available_printers
         )
       rescue StandardError => e
         logger.error("RailsProbe Listener broke: #{e}")
@@ -44,6 +44,19 @@ module RailsProbe
         # run call anyway (risky!)
         block.call
       end
+    end
+
+    # TODO: clean up printer mapping
+    def available_printers
+      printer_map = {
+        graphText: Printers::GraphText.name,
+        graphHtml: Printers::GraphHtml.name,
+        callStack: Printers::CallStack.name
+      }
+
+      RailsProbe.printer_config.map do |printer, enabled|
+        printer_map[printer.to_sym] if enabled
+      end.compact
     end
 
     def logger

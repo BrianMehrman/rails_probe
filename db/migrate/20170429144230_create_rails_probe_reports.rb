@@ -1,4 +1,4 @@
-class CreateRailsProbeReports < ActiveRecord::Migration[5.1]
+class CreateRailsProbeReports < ActiveRecord::Migration
   def change
     create_table :rails_probe_reports, id: :uuid do |t|
       t.string :host
