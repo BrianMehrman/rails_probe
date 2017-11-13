@@ -1,5 +1,5 @@
 # RailsProbe
-Short description and motivation.
+The rails probe is a UI for managing and tracking ruby performance profiles.
 
 ## Usage
 How to use my plugin.
@@ -14,6 +14,29 @@ gem 'rails_probe'
 And then execute:
 ```bash
 $ bundle
+```
+
+Install migrations
+```bash
+$ rake rails_probe:install:migrations
+$ rake db:migrate
+```
+
+Mount engine
+```ruby
+# config/routes.rb
+...
+mount RailsProbe::Engine => "/rails_probe"
+...
+```
+
+Include Listener into controller you want to listen to
+```ruby
+class ApplicationController < ActionController::Base
+  include RailsProbe::Listener
+
+  ...
+end
 ```
 
 Or install it yourself as:

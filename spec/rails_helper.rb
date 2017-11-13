@@ -7,8 +7,6 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'pry'
-require 'rails-controller-testing'
-Rails::Controller::Testing.install
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
