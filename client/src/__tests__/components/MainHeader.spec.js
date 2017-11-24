@@ -8,10 +8,13 @@ test('MainHeader Enable button triggers callback', () => {
     graphHtml: false,
     callStack: false
   }
+
   const component = renderer.create(
       <MainHeader
         isListening={false}
         toggleListener={()=>true}
         listenerConfig={config} />
-    );
+    ).toJSON();
+
+  expect(component).toContain('Enabled');
 });
