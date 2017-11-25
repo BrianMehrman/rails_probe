@@ -46,7 +46,7 @@ module RailsProbe
       end
 
       it 'creates a report with options' do
-        expect(RailsProbe::Report).to receive(:create).with({
+        expect(RailsProbe::Report).to receive(:new).with({
           action: action,
           session: session,
           host: host,

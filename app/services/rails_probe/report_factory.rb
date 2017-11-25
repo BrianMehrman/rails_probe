@@ -1,6 +1,7 @@
 module RailsProbe
   class ReportFactory
     def self.create(profile, **options)
+      binding.pry
       new(profile, options).create
     end
 
@@ -25,7 +26,6 @@ module RailsProbe
 
     def report
       @report ||= RailsProbe::Report.new(
-        id: SecureRandom.uuid,
         action: @action,
         session: @session,
         host: @host,
