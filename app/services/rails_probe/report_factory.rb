@@ -1,7 +1,6 @@
 module RailsProbe
   class ReportFactory
     def self.create(profile, **options)
-      binding.pry
       new(profile, options).create
     end
 

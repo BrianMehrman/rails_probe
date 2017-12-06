@@ -40,7 +40,6 @@ module RailsProbe
         )
       rescue StandardError => e
         logger.error("RailsProbe Listener broke: #{e}")
-        binding.pry
         # run call anyway (risky!)
         block.call
       end
