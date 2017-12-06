@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter,  } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 
 import {
@@ -125,6 +126,13 @@ class ReportView extends Component {
     dispatch: PropTypes.func.isRequired
   }
 
+  constructor(props) {
+    super(props);
+    this.state= {
+      redirectRoute: undefined
+    };
+  }
+
   componentDidMount() {
     const { dispatch, selectedReport } = this.props;
     dispatch(fetchReport(selectedReport.id));
@@ -137,9 +145,9 @@ class ReportView extends Component {
   }
 
   deleteAllReports = () => {
-    const {dispatch, history} = this.props;
+    const { dispatch } = this.props;
     dispatch(deleteAllReportsIfNeeded());
-    history.push(BASE_ROUTE);
+    window.location = BASE_ROUTE;
   }
 
   updateConfig = (config) => {
@@ -149,45 +157,52 @@ class ReportView extends Component {
   render() {
     const { selectedReport, isListening, history, listenerConfig } = this.props;
     const prints = (selectedReport && selectedReport.prints) || [];
+    const { redirectRoute } = this.state;
 
-    return (
-      <Box direction='column'
-        pad='none'
-        justify='center'
-        size='full'
-        colorIndex='light-2'>
-        <Box direction='row'
-          >
-          <Box direction='column'
-            pad='small'>
-            <Button icon={<CaretBack />}
-              onClick={() => {history.push(BASE_ROUTE)}}
-              />
+    if (redirectRoute) {
+      return (
+        <Redirect to={redirectRoute} />
+      )
+    } else {
+      return (
+        <Box direction='column'
+          pad='none'
+          justify='center'
+          size='full'
+          colorIndex='light-2'>
+          <Box direction='row'
+            >
+            <Box direction='column'
+              pad='small'>
+              <Button icon={<CaretBack />}
+                onClick={() => {history.push(BASE_ROUTE)}}
+                />
+            </Box>
+            <Box direction='column' full='horizontal'>
+              <MainHeader
+                isListening={isListening}
+                toggleListener={this.toggleListener}
+                listenerConfig={listenerConfig}
+                onListenerConfigChange={this.updateConfig}
+                deleteAllReports={this.deleteAllReports} />
+            </Box>
           </Box>
-          <Box direction='column' full='horizontal'>
-            <MainHeader
-              isListening={isListening}
-              toggleListener={this.toggleListener}
-              listenerConfig={listenerConfig}
-              onListenerConfigChange={this.updateConfig}
-              deleteAllReports={this.deleteAllReports} />
-          </Box>
-        </Box>
-        <Box direction='row'
-          justify='center' >
-          <Tabs >
-            <Tab title='Details'>
-              <DetailsView report={selectedReport} />
-            </Tab>
-            { prints.map((print) => (
-              <Tab title={print.type} >
-                <PrinterView print={print} />
+          <Box direction='row'
+            justify='center' >
+            <Tabs >
+              <Tab title='Details'>
+                <DetailsView report={selectedReport} />
               </Tab>
-            ))}
-          </Tabs>
+              { prints.map((print) => (
+                <Tab title={print.type} >
+                  <PrinterView print={print} />
+                </Tab>
+              ))}
+            </Tabs>
+          </Box>
         </Box>
-      </Box>
-    )
+      );
+    }
   }
 }
 

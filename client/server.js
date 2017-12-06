@@ -51,6 +51,10 @@ app.get("/rails_probe/reports", (req, res) => {
   res.json(reports);
 });
 
+app.delete("/rails_probe/reports/remove", (req, res) => {
+  res.json(true);
+});
+
 app.get("/rails_probe/reports/:id", (req, res) => {
   const report = report0;
   res.json(report);

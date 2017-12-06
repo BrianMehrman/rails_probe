@@ -20,13 +20,13 @@ module RailsProbe
     # DELETE /reports/1
     def destroy
       @report.destroy
-      redirect_to reports_url, notice: 'Report was successfully destroyed.'
+      render json: true, notice: 'Report was successfully destroyed.'
     end
 
     def destory_all
       @reports = Report.all
       @reports.destroy_all
-      redirect_to reports_url, notice: 'Reports were successfully destroyed.'
+      render json: true, notice: 'Reports were successfully destroyed.'
     end
 
     def print

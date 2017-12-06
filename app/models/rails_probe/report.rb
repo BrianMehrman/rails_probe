@@ -53,7 +53,7 @@ module RailsProbe
     end
 
     def raw_prints
-      data[:prints] || []
+      (data && data[:prints]) || []
     end
   end
 end

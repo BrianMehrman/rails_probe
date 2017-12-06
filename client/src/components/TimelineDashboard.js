@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 
 import {
   BASE_ROUTE,
@@ -31,6 +32,13 @@ class TimelineDashboard extends Component {
     dispatch: PropTypes.func.isRequired
   }
 
+  constructor(props) {
+    super(props);
+    this.state= {
+      redirectRoute: undefined
+    };
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchReportsIfNeeded());
@@ -51,9 +59,9 @@ class TimelineDashboard extends Component {
   }
 
   deleteAllReports = () => {
-    const {dispatch, history} = this.props;
+    const { dispatch } = this.props;
     dispatch(deleteAllReportsIfNeeded());
-    history.push(BASE_ROUTE);
+     window.location = BASE_ROUTE;
   }
 
   render() {
@@ -64,25 +72,34 @@ class TimelineDashboard extends Component {
       listenerConfig
     } = this.props;
 
-    return (
-      <Box direction='column'
-        flex={true}
-        pad='none'
-        justify='center'
-        colorIndex='neutral-2'>
-        <MainHeader
-          isListening={isListening}
-          listenerConfig={listenerConfig}
-          onListenerConfigChange={this.updateListenerConfig}
-          toggleListener={this.toggleListener}
-          deleteAllReports={this.deleteAllReports} />
-        <TimeGraph reports={reports} />
-        <ReportsTable
-          reports={reports}
-          selectReport={this.selectReport}
-          selectedReport={selectedReport} />
-      </Box>
-    )
+    const { redirectRoute } = this.state;
+
+    if (redirectRoute) {
+      debugger
+      return (
+        <Redirect to={redirectRoute} />
+      )
+    } else {
+      return (
+        <Box direction='column'
+          flex={true}
+          pad='none'
+          justify='center'
+          colorIndex='neutral-2'>
+          <MainHeader
+            isListening={isListening}
+            listenerConfig={listenerConfig}
+            onListenerConfigChange={this.updateListenerConfig}
+            toggleListener={this.toggleListener}
+            deleteAllReports={this.deleteAllReports} />
+          <TimeGraph reports={reports} />
+          <ReportsTable
+            reports={reports}
+            selectReport={this.selectReport}
+            selectedReport={selectedReport} />
+        </Box>
+      )
+    }
   }
 }
 
