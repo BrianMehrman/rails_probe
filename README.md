@@ -8,6 +8,11 @@ Add this line to your application's Gemfile:
 gem 'rails_probe'
 ```
 
+Or install it yourself as:
+```bash
+$ gem install rails_probe
+```
+
 And then execute:
 ```bash
 $ bundle
@@ -34,11 +39,6 @@ class ApplicationController < ActionController::Base
 
   ...
 end
-```
-
-Or install it yourself as:
-```bash
-$ gem install rails_probe
 ```
 
 ## Contributing
