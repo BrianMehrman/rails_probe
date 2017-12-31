@@ -14,7 +14,7 @@ const ReportsTable = ({ reports }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Hook</th>
+            <th>action</th>
             <th>Session</th>
             <th>Created At</th>
           </tr>
@@ -23,7 +23,7 @@ const ReportsTable = ({ reports }) => {
         { items.map((report) => (
           <tr>
             <td><Link to={report.link()}>{report.id}</Link></td>
-            <td>{report.hook}</td>
+            <td>{report.action}</td>
             <td>{report.session}</td>
             <td>{report.start}</td>
           </tr>

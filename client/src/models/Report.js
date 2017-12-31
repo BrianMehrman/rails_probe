@@ -3,7 +3,8 @@ import { BASE_ROUTE } from '../actions';
 class Report {
   //     {
   //       id: 'abs',
-  //       hook: 'foo#show',
+  //       action: 'foo#show',
+  //       host: 'localhost',
   //       session: 'xxy',
   //       start: hoursAgo(1, minutesAgo(-5)),
   //       printers: [
@@ -26,7 +27,8 @@ class Report {
   //     }
   constructor(attributes) {
     this.id = attributes.id;
-    this.hook = '';
+    this.host = 'localhost';
+    this.action = attributes.action;
     this.session = attributes.session;
     this.start = attributes.created_at;
     this.prints = this.extractPrints(attributes);

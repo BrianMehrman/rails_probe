@@ -189,7 +189,7 @@ class ReportView extends Component {
           </Box>
           <Box direction='row'
             justify='center' >
-            <Tabs >
+            <Tabs>
               <Tab title='Details'>
                 <DetailsView report={selectedReport} />
               </Tab>

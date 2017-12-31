@@ -30,3 +30,7 @@ body {
         border-left: 1px solid darken($gray-lightest, 6.5%);
     }
 }
+
+role['tablist'] {
+  width: 100%;
+}

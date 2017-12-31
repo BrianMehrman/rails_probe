@@ -34,13 +34,12 @@ const ConfigControl = ({ config, onChange }) => {
   )
 }
 
-const TimeHeader = ({ isListening, toggleListener, deleteAllReports, listenerConfig, onListenerConfigChange }) => {
+const MainHeader = ({ isListening, toggleListener, deleteAllReports, listenerConfig, onListenerConfigChange }) => {
   const listeningLabel = isListening ? 'Disable' : 'Enable';
 
   return (
     <Header justify="center" colorIndex='neutral-1'>
       <Box
-        size={{width: {min: 'auto', max: 'xxlarge'}}}
         direction='column'
         flex={true}
         pad='small'>
@@ -53,6 +52,7 @@ const TimeHeader = ({ isListening, toggleListener, deleteAllReports, listenerCon
           <Box direction='row'
             margin='small'>
             <Button icon={<Power />}
+              className="MainHeader-listening-button"
               label={listeningLabel}
               onClick={toggleListener}
               critical={isListening}
@@ -77,4 +77,4 @@ const TimeHeader = ({ isListening, toggleListener, deleteAllReports, listenerCon
   )
 }
 
-export default TimeHeader
+export default MainHeader

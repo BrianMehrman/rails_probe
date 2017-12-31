@@ -1,9 +1,6 @@
 # RailsProbe
 The rails probe is a UI for managing and tracking ruby performance profiles.
 
-## Usage
-How to use my plugin.
-
 ## Installation
 Add this line to your application's Gemfile:
 

@@ -15,7 +15,9 @@ module RailsProbe
     end
 
     def rails_probe_listen(&block)
+      logger.info "probing..."
       if RailsProbe.listening?
+        logger.warn "probed: #{probed_event_name}"
         Listener.listen(event_name: probed_event_name, session: session, request: request, user: try(:user), &block)
       else
         block.call

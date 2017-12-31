@@ -1,20 +1,32 @@
-import MainHeader from '../../components/MainHeader';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
-test('MainHeader Enable button triggers callback', () => {
-  const config = {
-    graphText: false,
-    graphHtml: false,
-    callStack: false
-  }
+import MainHeader from '../../components/MainHeader';
 
-  const component = renderer.create(
-      <MainHeader
-        isListening={false}
-        toggleListener={()=>true}
-        listenerConfig={config} />
-    ).toJSON();
+const config = {
+  graphText: false,
+  graphHtml: false,
+  callStack: false
+}
 
-  expect(component).toContain('Enabled');
+test('MainHeader displays `Enable` when not listening', () => {
+  const component = mount(
+    <MainHeader
+      isListening={false}
+      toggleListener={()=>true}
+      listenerConfig={config} />
+  );
+  const button = component.find('.MainHeader-listening-button').first();
+  expect(button.text()).toContain('Enable');
+});
+
+test('MainHeader displays `Disable` when listening.', () =>{
+  const component = mount(
+    <MainHeader
+      isListening={true}
+      toggleListener={()=>true}
+      listenerConfig={config} />
+  );
+  const button = component.find('.MainHeader-listening-button').first();
+  expect(button.text()).toContain('Disable');
 });

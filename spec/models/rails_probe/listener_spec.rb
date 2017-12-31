@@ -1,7 +1,6 @@
 require 'rails_helper'
 require 'JSON'
 
-
 # ==============================
 #  Dummy Testing for Listener
 # ==============================
@@ -24,16 +23,24 @@ RSpec.describe RecipesController, type: :controller do
 
     it 'calls ReportFactory' do
       factory_args = {
-        profile: 'foo',
         action: 'recipes#index',
         session: 'session-a',
         host: 'test.host',
-        user_id: 'user-abc'
+        user_id: 'user-abc',
+        printers: ['RailsProbe::Printers::GraphText']
       }
-      expect(RailsProbe::ReportFactory).to receive(:create).with(factory_args)
+      expect(RailsProbe::ReportFactory).to receive(:create).with('foo', factory_args)
       get :index
     end
   end
+
+  describe '#probed_event_name' do
+    it 'creates a simple name for the controller action' do
+      get :index
+      expect(RailsProbe::Report.first.action).to eq('recipes#index')
+    end
+  end
+
 end
 
 module RailsProbe
